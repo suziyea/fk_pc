@@ -157,10 +157,9 @@ const ProductGroupList = () => {
             const res = await getMemberList({
               ...params,
             });
-            console.log(params);
             setUserListData(res?.list || []);
             return {
-              total: res?.recordsCount || 0,
+              total: res?.limit || 0,
             };
           }} />
       </Card>
