@@ -1,0 +1,46 @@
+@import '~@/global.less';
+
+.top-filter {
+  display: flex;
+  .clearfix;
+
+  .top-left {
+    // float: left;
+
+    .table-tab {
+      line-height: 18px;
+    }
+
+    .button-group {
+      margin-bottom: 16px;
+    }
+  }
+
+  .top-right {
+    flex: 1;
+    align-self: flex-end;
+    text-align: right;
+
+    .right-item {
+      text-align: left;
+    }
+
+    :global(.ant-form-item) {
+      margin-bottom: 16px;
+    }
+
+    .input-group {
+      display: flex;
+    }
+  }
+}
+
+.table {
+  position: relative;
+
+  .total {
+    position: absolute;
+    right: 200px;
+    bottom: 17px;
+  }
+}
