@@ -25,30 +25,6 @@
     component: './Welcome',
   },
   {
-    path: '/admin',
-    name: '用户',
-    icon: 'crown',
-    access: 'canAdmin',
-    component: './Admin',
-    routes: [
-      {
-        path: '二级页面',
-        name: 'sub-page',
-        icon: 'smile',
-        component: './Welcome',
-      },
-      {
-        component: './404',
-      },
-    ],
-  },
-  {
-    name: '查询表格',
-    icon: 'table',
-    path: '/list',
-    component: './TableList',
-  },
-  {
     path: "member",
     code: "member",
     name: "会员管理",
@@ -61,6 +37,18 @@
     },
     { component: "./404" },
     ]
+  },
+  {
+    path: "content",
+    code: "content",
+    name: "内容管理",
+    icon: "table",
+    routes: [{
+      path: "appContent",
+      code: "appContent",
+      name: "移动端内容配置(新)",
+      component: "./content/appContent",
+    }]
   },
   {
     path: '/',

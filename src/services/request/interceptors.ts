@@ -22,7 +22,8 @@ loadingManger.hideHandler = () => {
 export function requestInterceptors(config: MyHttp.RequestConfig) {
   //  请求头携带token
   const token = getLocalStorage('token');
-
+  console.log('你好啊',config);
+  
   if (config.loading) {
     loadingManger.show();
   }
@@ -49,6 +50,19 @@ export async function responseInterceptors(response: MyHttp.Response): Promise<a
   if (res.code === 100000) {
     return res.data;
   }
+
+  if (res.code === 110401) {
+    notification.error({
+      message: '登录失效，请重新登录',
+    });
+    removeLocalStorage('token');
+    removeLocalStorage('userInfo');
+    history.replace({
+      pathname: '/user/login',
+    });
+    return
+  }
+
   if (res.code == null) {
     console.error(`注意：接口"${response.config.url}"未按前端标准返回数据结构，请提醒后端及时修改`);
     return response.data;
@@ -69,6 +83,8 @@ export async function responseInterceptors(response: MyHttp.Response): Promise<a
 
 /** 响应错误处理 */
 export async function responseErrorHandler(error: MyHttp.Error) {
+  console.log(error,'哈哈好错误');
+  
   const { location } = history;
   const { pathname } = location;
   console.log('出错信息:', error, error.config);

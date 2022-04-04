@@ -2,10 +2,10 @@ import request from '@/services/request';
 
 
 export function signIn(data: any) {
-  return request({
+  return request<any>({
     url: '/api/security/admin/login',
     method: 'post',
-    loading: true,
+    // loading: true,
     data,
   });
 }
@@ -25,6 +25,15 @@ export function imgUpload(data: any) {
 export function updateImg(data: any) {
   return request<any>({
     url: `/api/admin/image-collection/update`,
+    method: 'post',
+    data,
+  });
+}
+
+// 会员禁用
+export function userEnabled(data: any) {
+  return request<any>({
+    url: `/api/admin/user/update-enabled`,
     method: 'post',
     data,
   });

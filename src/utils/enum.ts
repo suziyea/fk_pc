@@ -8,3 +8,31 @@ export const imgUploadEnum = [{
   value: 'home_page_bg_image',
   label: '主页背',
 }];
+
+// 渠道对象
+export const selectOption = [
+  {
+    label: '渠道1',
+    value: '1'
+  },
+  {
+    label: '渠道2',
+    value: '2'
+  },
+];
+
+// 用户状态
+export const userStatusEnum = [
+  {
+    label: '已注册',
+    value: '1'
+  },
+  {
+    label: '已认证',
+    value: '2'
+  },
+  {
+    label: '已绑卡',
+    value: '3'
+  },
+]

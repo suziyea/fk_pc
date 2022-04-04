@@ -4,7 +4,7 @@ import { requestInterceptors, responseInterceptors, responseErrorHandler } from 
 
 console.log(REACT_APP_ENV);
 const request = axios.create({
-  baseURL: REACT_APP_ENV === 'mock' ? '' : API_SERVER,
+  baseURL: API_SERVER,
   loading: false,
   silence: false,
 } as MyHttp.RequestConfig);

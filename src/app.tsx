@@ -5,11 +5,9 @@ import type { RunTimeLayoutConfig } from 'umi';
 import { history } from 'umi';
 import RightContent from '@/components/RightContent';
 import Footer from '@/components/Footer';
-import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
 // import { BookOutlined, LinkOutlined } from '@ant-design/icons';
 import defaultSettings from '../config/defaultSettings';
 import { getLocalStorage } from './utils/storage';
-
 const isDev = process.env.NODE_ENV === 'development';
 console.log(isDev);
 
@@ -102,7 +100,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }:an
     // ...initialState?.settings,
     menuHeaderRender: undefined,
     ...initialState?.settings,
-    logo: 'https://admin-test.harmay.com/logo.png',
+    logo: require('@/assets/img/logo.png')
 
   };
 };

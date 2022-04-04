@@ -1,21 +1,20 @@
-import { Settings as LayoutSettings } from '@ant-design/pro-layout';
+import { Settings as LayoutSettings } from "@ant-design/pro-layout";
 
 const Settings: LayoutSettings & {
   pwa?: boolean;
   logo?: string;
 } = {
-  navTheme: 'light',
-  // 拂晓蓝
-  primaryColor: '#000',
-  layout: 'mix',
-  contentWidth: 'Fluid',
+  navTheme: "light",
+  primaryColor: "#000",
+  layout: "mix",
+  contentWidth: "Fluid",
   fixedHeader: false,
   fixSiderbar: true,
   colorWeak: false,
-  title: '',
+  title: "",
   pwa: false,
-  logo: '',
-  iconfontUrl: '',
+  // logo: "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg",
+  iconfontUrl: "",
 };
 
 export default Settings;

@@ -11,11 +11,13 @@ import HarTable from '@/components/HarTable';
 import { actionRefHandle } from '@/components/HarTable/types';
 import RoleForm from './component/HandleForm';
 import {
-    getMemberList
+  getMemberList
 } from '@/services/api/member';
-import { updateImg } from '@/services/api/user';
+import { updateImg, userEnabled } from '@/services/api/user';
+import { selectOption, userStatusEnum } from '@/utils/enum';
 
 const { Link } = Typography;
+const { confirm } = Modal;
 
 const ProductGroupList = () => {
   const actionRef = useRef<actionRefHandle>();
@@ -48,22 +50,42 @@ const ProductGroupList = () => {
     key: 'phone',
   },
   {
+    title: '创建时间',
+    dataIndex: 'created_at',
+    key: 'created_at',
+    render: (text: any) => moment(text).format('YYYY-MM-DD HH:mm:ss'),
+
+  },
+  {
     title: '状态',
-    dataIndex: 'isDisabled',
-    key: 'isDisabled',
+    dataIndex: 'status',
+    key: 'status',
     render: (text: number) => (
       <>
-        {!text ? (
-          <>
-            <Badge status="success" />
-            已启用
-          </>
-        ) : (
-          <>
-            <Badge status="error" />
-            已停用
-          </>
-        )}
+        {
+          text === 1 && (
+            <>
+              <Badge status="default" />
+              <span>已注册</span>
+            </>
+          )
+        }
+        {
+          text === 2 && (
+            <>
+              <Badge status="success" />
+              <span>已实名</span>
+            </>
+          )
+        }
+        {
+          text === 3 && (
+            <>
+              <Badge status="processing" />
+              <span>已停用</span>
+            </>
+          )
+        }
       </>
     ),
   },
@@ -77,25 +99,33 @@ const ProductGroupList = () => {
     key: 'operation',
     render: (_: any, record: any) => (
       <Space size="middle">
-          <Link
-            className="link-color"
-            onClick={() => {
-              handleForm.setFieldsValue({
-                ...record,
-                isDisabled: (!record?.isDisabled),
-                roleIds: record.roles?.map((v: any) => (v.roleId)),
-              });
-
-              setAccountId(record.id);
-              setIsVisible(true);
-            }}>
-            {/* userType === 1 是主账号，主账号不能修改 隐藏 */}
-            {/* {record.userType === 2 && '编辑'} */}
-            {'编辑'}
-          </Link>
+        <Link
+          type={`${(record.enabled) ? 'danger' : 'success'}`}
+          onClick={async () => {
+            confirm(
+              {
+                content: `确认要${(record.enabled) ? '停' : '启'}用该会员吗？`,
+                okText: '确认',
+                okType: 'danger',
+                cancelText: '取消',
+                onOk: async () => {
+                  await userEnabled({
+                    id: [record.id],
+                  });
+                  notification.success({
+                    message: `${(record.enabled) ? '停用' : '启用'}成功`,
+                  });
+                  actionRef.current?.reload();
+                },
+              },
+            );
+          }}>
+          {(record.enabled) ? '停用' : '启用'}
+        </Link>
       </Space>
     ),
   }];
+  const disabledDate = (current: any) => (current && current > moment().endOf('day'));
 
   // 弹框确定
   const addOrUpdateRole = async () => {
@@ -109,9 +139,9 @@ const ProductGroupList = () => {
       } else {
         await updateImg(submitForm)
       }
-    
+
       notification.success({
-        message: accountId? '修改成功' : '新建成功',
+        message: accountId ? '修改成功' : '新建成功',
       });
       setIsVisible(false);
       resetHandleFields();
@@ -128,26 +158,48 @@ const ProductGroupList = () => {
           actionRef={actionRef}
           formRef={roleForms}
           filter={{
-            operation: [{
-              key: 1,
-              type: 'primary',
-              label: '新增会员',
-              auth: 'addAccountBtn',
-              onClick: () => {
-                setAccountId('');
-                resetHandleFields();
-                handleForm.setFieldsValue({
-                  isDisabled: true,
-                });
-                setIsVisible(true);
+            initialValues: {
+              selectkey: {
+                key: 'mobile',
               },
-            }],
-            filterItem: [{
-              key: 1,
-              prop: 'userName',
-              name: '账号归属人',
-              placeholder: '账号归属人',
-            }],
+            },
+            // operation: [{
+            //   key: 1,
+            //   type: 'primary',
+            //   label: '新增会员',
+            //   auth: 'addAccountBtn',
+            //   onClick: () => {
+            //     setAccountId('');
+            //     resetHandleFields();
+            //     handleForm.setFieldsValue({
+            //       isDisabled: true,
+            //     });
+            //     setIsVisible(true);
+            //   },
+            // }],
+
+            filterItem: [
+              {
+                key: 1,
+                type: 'dateRange',
+                prop: 'time',
+                disabledDate,
+              }, {
+                key: 2,
+                prop: 'channel_id',
+                placeholder: '全部下单渠道',
+                options: selectOption,
+              }, {
+                key: 3,
+                prop: 'status',
+                placeholder: '用户状态',
+                options: userStatusEnum,
+              }, {
+                key: 4,
+                prop: 'keyword',
+                name: '手机号',
+                placeholder: '请输入手机号',
+              }],
           }}
           rowKey="email"
           columns={columns}
@@ -156,10 +208,12 @@ const ProductGroupList = () => {
             setUserListData([]);
             const res = await getMemberList({
               ...params,
+              st: params.time?.[0] && moment(params.time[0]).format('YYYY-MM-DD 00:00:00'),
+              et: params.time?.[1] && moment(params.time[1]).format('YYYY-MM-DD 23:59:59'),
             });
             setUserListData(res?.list || []);
             return {
-              total: res?.limit || 0,
+              total: +(res?.total_row) || 0,
             };
           }} />
       </Card>

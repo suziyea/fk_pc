@@ -5,7 +5,7 @@
   "description": "An out-of-box UI solution for enterprise applications",
   "scripts": {
     "analyze": "cross-env ANALYZE=1 umi build",
-    "build": "umi build",
+    "build": "cross-env REACT_APP_ENV=prod UMI_ENV=prod umi build",
     "deploy": "npm run build && npm run gh-pages",
     "dev": "npm run start:dev",
     "gh-pages": "gh-pages -d dist",
@@ -55,20 +55,21 @@
     "@ant-design/pro-table": "^2.69.0",
     "@umijs/route-utils": "^2.0.0",
     "antd": "^4.18.0",
+    "axios": "^0.23.0",
     "classnames": "^2.3.0",
+    "compressorjs": "^1.1.1",
     "lodash": "^4.17.0",
     "moment": "^2.29.0",
     "omit.js": "^2.0.2",
     "rc-menu": "^9.1.0",
     "rc-util": "^5.16.0",
     "react": "^17.0.0",
+    "react-cropper": "^2.1.8",
     "react-dev-inspector": "^1.7.0",
     "react-dom": "^17.0.0",
     "react-helmet-async": "^1.2.0",
-    "umi": "^3.5.0",
-    "axios": "^0.23.0",
-    "react-cropper": "^2.1.8",
-    "compressorjs": "^1.1.1"
+    "react-photo-view": "^0.5.7",
+    "umi": "^3.5.0"
   },
   "devDependencies": {
     "@ant-design/pro-cli": "^2.1.0",
@@ -108,5 +109,10 @@
   },
   "gitHooks": {
     "commit-msg": "fabric verify-commit"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint-staged"
+    }
   }
 }
