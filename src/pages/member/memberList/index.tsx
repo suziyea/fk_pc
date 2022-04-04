@@ -3,7 +3,7 @@ import {
   useState, useRef, useEffect,
 } from 'react';
 import {
-  Card, Form, Badge, Space, Typography, Modal, notification, Tag,
+  Card, Form, Badge, Space, Typography, Modal, notification,
 } from 'antd';
 import moment from 'moment';
 
@@ -14,7 +14,7 @@ import {
   getMemberList,getChannelList
 } from '@/services/api/member';
 import { updateImg, userEnabled } from '@/services/api/user';
-import { selectOption, userStatusEnum } from '@/utils/enum';
+import { userStatusEnum } from '@/utils/enum';
 
 const { Link } = Typography;
 const { confirm } = Modal;

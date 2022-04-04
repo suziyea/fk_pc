@@ -10,6 +10,7 @@ import { useLocation, Location } from 'umi';
 import moment from 'moment';
 import DetailPageHeader from '@/components/DetailPageHeader';
 import { getSessionStorage } from '@/utils/storage';
+import styles from './style.less';
 
 const DetailsChannel = () => {
   const location = useLocation();
@@ -60,7 +61,7 @@ const DetailsChannel = () => {
         <Divider style={{ marginBottom: 32 }} />
         <p className="ant-descriptions-title">描述</p>
         <div title="描述" style={{ marginBottom: 32 }}>
-          <p className="ant-descriptions-item-label">
+          <p className={styles.detail}>
             {channelDetails?.remark}
           </p>
         </div>
