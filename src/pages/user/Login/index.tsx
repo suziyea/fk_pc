@@ -135,7 +135,7 @@ const Login = () => {
                   size: 'large',
                   prefix: <LockOutlined className={styles.prefixIcon} />,
                 }}
-                placeholder="请输入正确的登录密码！"
+                placeholder="密码："
                 rules={[
                   {
                     required: true,
