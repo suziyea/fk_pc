@@ -82,10 +82,6 @@ module.exports = {
     page: true,
     REACT_APP_ENV: true,
     API_SERVER: true,
-    UPLOAD_SERVER: true,
     MOCK: true,
-    TEMPLATE_URL: true,
-    BFF_SERVER: true,
-    H5_SCHEME: true,
   },
 };
