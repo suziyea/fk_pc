@@ -178,7 +178,7 @@ const Login = () => {
                 placeholder="请输入验证码"
                 captchaTextRender={(timing, count) => {
                   if (timing) {
-                    return `${count} $获取验证码}`;
+                    return `${count} 获取验证码`;
                   }
                   return "获取验证码"
                 }}
