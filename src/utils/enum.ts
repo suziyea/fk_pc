@@ -35,4 +35,12 @@ export const userStatusEnum = [
     label: '已绑卡',
     value: '3'
   },
+  {
+    label: '第一笔付款完成',
+    value: '4'
+  },
+  {
+    label: '第二笔付款完成',
+    value: '5'
+  }
 ]

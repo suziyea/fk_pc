@@ -1,20 +1,35 @@
+import { useRef, useCallback } from 'react';
 /* eslint-disable no-return-assign */
 interface enumType {
   value: string | number;
   label: string | number;
 }
-/**
- * 枚举值映射
- * @param val 枚举的值
- * @param enumList 枚举列表
- * @returns 枚举的label
- */
+
+// 枚举映射
 export const mapEnum = (val: any, enumList: Array<enumType>) => {
-  let str = null;
+  let strVal = null;
   enumList.forEach((v: enumType) => {
     if (v.value === val) {
-      str = v.label;
+      strVal = v.label;
     }
   });
-  return str;
+  return strVal;
 };
+
+
+// 防止多次点击
+export function useLockFn<T extends any[], K>(fn: (...args: T) => Promise<K>): (...args: T) => Promise<K | undefined> {
+  const lockRef = useRef(false);
+
+  return useCallback(async (...args: T) => {
+    if (lockRef.current) return;
+
+    try {
+      lockRef.current = true;
+      const result = await fn(...args);
+      return result;
+    } finally {
+      lockRef.current = false;
+    }
+  }, [fn]);
+}
