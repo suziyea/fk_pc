@@ -131,6 +131,15 @@ const ChannelList = () => {
           }}>
           编辑
         </Link>
+        <Link
+          className="link-color"
+          onClick={() => {
+            removeSessionStorage('channelDetailsStorage');
+            setSessionStorage('channelDetailsStorage', record);
+            history.push(`channelDetail?edit=${record.id || ''}&name=${record.name}`);
+          }}>
+          详情
+        </Link>
       </Space>
     ),
   }];

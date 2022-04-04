@@ -19,3 +19,11 @@ export function updateImg(data: any) {
       data,
     });
   }
+
+export function getChannelList(data: any) {
+  return request({
+    url: '/api/admin/channel/list',
+    method: 'post',
+    data,
+  });
+}

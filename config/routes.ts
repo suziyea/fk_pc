@@ -64,6 +64,13 @@
         hideInMenu: true,
         component: "./content/addChannel",
       },
+      {
+        path: "channelDetail",
+        code: "channelDetail",
+        name: "渠道详情",
+        hideInMenu: true,
+        component: "./content/channelDetail",
+      },
     ],
   },
   {

@@ -11,7 +11,7 @@ import HarTable from '@/components/HarTable';
 import { actionRefHandle } from '@/components/HarTable/types';
 import RoleForm from './component/HandleForm';
 import {
-  getMemberList
+  getMemberList,getChannelList
 } from '@/services/api/member';
 import { updateImg, userEnabled } from '@/services/api/user';
 import { selectOption, userStatusEnum } from '@/utils/enum';
@@ -27,37 +27,41 @@ const ProductGroupList = () => {
   const [userListData, setUserListData] = useState([]);
   const [accountId, setAccountId] = useState<string>('');
   const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [channelList, setChannelList] = useState([]);
 
   const { resetFields: resetHandleFields, validateFields: validateHandleFields } = handleForm;
 
   useEffect(() => {
-
+    getChannel()
   }, []);
 
+  const getChannel = async () => {
+    const list = await getChannelList({});
+    setChannelList(
+      list.map((v: any) => ({
+          value: v.id,
+          label: v.name,
+        })),
+    );
+  };
+
   const columns = [{
-    title: 'id',
-    dataIndex: 'id',
-    key: 'id',
-    ellipsis: true,
-  },
-  {
-    title: '用户名',
-    dataIndex: 'actual_name',
-    key: 'actual_name',
-  }, {
     title: '手机',
     dataIndex: 'phone',
     key: 'phone',
   },
   {
-    title: '创建时间',
-    dataIndex: 'created_at',
-    key: 'created_at',
-    render: (text: any) => moment(text).format('YYYY-MM-DD HH:mm:ss'),
-
+    title: '姓名',
+    dataIndex: 'actual_name',
+    key: 'actual_name',
+  }, 
+  {
+    title: '身份证号',
+    dataIndex: 'id_number',
+    key: 'id_number',
   },
   {
-    title: '状态',
+    title: '用户状态',
     dataIndex: 'status',
     key: 'status',
     render: (text: number) => (
@@ -90,11 +94,42 @@ const ProductGroupList = () => {
     ),
   },
   {
+    title: '渠道',
+    dataIndex: 'channel',
+    key: 'channel',
+    render: (text: any,record:any) => {
+      console.log(text);
+      return (
+        record?.channel ? (`${record?.channel?.name || ''} - ${record?.channel?.code || ''}`) : null
+      )
+    },
+  },
+  {
+    title: '注册时间',
+    dataIndex: 'created_at',
+    key: 'created_at',
+    render: (text: any) => moment(text).format('YYYY-MM-DD HH:mm:ss'),
+  },
+  {
     title: '上次登录时间',
     dataIndex: 'last_login',
     key: 'last_login',
     render: (text: any) => moment(text).format('YYYY-MM-DD HH:mm:ss'),
-  }, {
+  },
+  {
+    title: '第一笔付费时间',
+    dataIndex: 'first_pay_time',
+    key: 'first_pay_time',
+    render: (text: any) => moment(text).format('YYYY-MM-DD HH:mm:ss'),
+  },
+  {
+    title: '第二笔付费时间',
+    dataIndex: 'second_pay_time',
+    key: 'second_pay_time',
+    render: (text: any) => moment(text).format('YYYY-MM-DD HH:mm:ss'),
+  },
+  
+  {
     title: '操作',
     key: 'operation',
     render: (_: any, record: any) => (
@@ -188,7 +223,7 @@ const ProductGroupList = () => {
                 key: 2,
                 prop: 'channel_id',
                 placeholder: '全部下单渠道',
-                options: selectOption,
+                options: channelList,
               }, {
                 key: 3,
                 prop: 'status',

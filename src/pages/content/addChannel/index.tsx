@@ -25,7 +25,7 @@ import {
 const { Item } = Form;
 const { TextArea } = Input;
 
-const AddHarmaryActivity = () => {
+const AddChannel = () => {
   const history = useHistory();
   const location = useLocation();
   const { query } = location as Location;
@@ -149,4 +149,4 @@ const AddHarmaryActivity = () => {
     </PageContainer>
   );
 };
-export default AddHarmaryActivity;
+export default AddChannel;

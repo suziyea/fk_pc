@@ -4,7 +4,7 @@ export default () => {
   const currentYear = new Date().getFullYear();
   return (
     <DefaultFooter
-      copyright={`${currentYear} Fk 后台管理系统`}
+      copyright={`${currentYear} 牟财金融后台管理系统`}
       links={[]} />
   );
 };
