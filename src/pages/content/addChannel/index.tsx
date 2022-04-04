@@ -117,11 +117,11 @@ const AddHarmaryActivity = () => {
               </Item>
 
               <Item
-                label="规则"
+                label="描述"
                 name="remark"
-                rules={[{ required: true, message: '请输入规则' }]}>
+                rules={[{ required: true, message: '请输入描述' }]}>
                 <TextArea
-                  placeholder="规则"
+                  placeholder="描述"
                   style={{ maxWidth: '500px' }}
                   rows={4}
                   showCount
