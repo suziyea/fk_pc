@@ -97,7 +97,7 @@ const ProductGroupList = () => {
                 cancelText: '取消',
                 onOk: async () => {
                   await delProduct({
-                    id: [record.id],
+                    id: record.id,
                   });
                   notification.success({
                     message: `删除成功`,
