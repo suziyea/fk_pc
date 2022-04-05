@@ -86,7 +86,7 @@ const OtherSetList = () => {
       </Space>
     ),
   }];
-  const disabledDate = (current: any) => (current && current > moment().endOf('day'));
+  // const disabledDate = (current: any) => (current && current > moment().endOf('day'));
 
   // 弹框确定
   const addOrUpdateRole = async () => {
@@ -133,12 +133,13 @@ const OtherSetList = () => {
             // }],
 
             filterItem: [
+              // {
+              //   key: 1,
+              //   type: 'dateRange',
+              //   prop: 'time',
+              //   disabledDate,
+              // }, 
               {
-                key: 1,
-                type: 'dateRange',
-                prop: 'time',
-                disabledDate,
-              }, {
                 key: 4,
                 prop: 'keyword',
                 name: '查询',
