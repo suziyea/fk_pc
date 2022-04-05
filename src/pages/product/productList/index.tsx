@@ -36,26 +36,43 @@ const ProductGroupList = () => {
     title: 'id',
     dataIndex: 'id',
     key: 'id',
+    width: 100,
   },
   {
     title: '名称',
     dataIndex: 'name',
     key: 'name',
-  }, 
+  },
+  {
+    title: '产品图标',
+    dataIndex: 'logo',
+    key: 'logo',
+    width: 130,
+    render: (text: string) => <img style={{ width: '36px' }} src={text} alt="icon" />,
+  },
   {
     title: '金额',
     dataIndex: 'amount',
     key: 'amount',
+    width: 100,
   },
   {
     title: '周期',
     dataIndex: 'term',
     key: 'term',
+    width: 100,
   },
   {
     title: '最快周期',
     dataIndex: 'fastest_term',
     key: 'fastest_term',
+    width: 100,
+  },
+  {
+    title: '创建时间',
+    dataIndex: 'created_at',
+    key: 'created_at',
+    render: (text: any) => moment(text).format('YYYY-MM-DD HH:mm:ss'),
   },
   {
     title: '备注',
@@ -72,6 +89,7 @@ const ProductGroupList = () => {
   {
     title: '操作',
     key: 'operation',
+    width: 120,
     render: (_: any, record: any) => (
       <Space size="middle">
         <Link
