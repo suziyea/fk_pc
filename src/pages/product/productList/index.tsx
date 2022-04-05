@@ -3,7 +3,7 @@ import {
   useState, useRef, useEffect,
 } from 'react';
 import {
-  Card, Form, Badge, Space, Typography, Modal, notification,Tooltip
+  Card, Form, Space, Typography, Modal, notification,Tooltip
 } from 'antd';
 import moment from 'moment';
 
@@ -13,7 +13,6 @@ import HandleProductForm from './component/HandleForm';
 import {
     getProdctList,updateProduct,addProduct,delProduct
 } from '@/services/api/product';
-import { userStatusEnum } from '@/utils/enum';
 
 const { Link } = Typography;
 const { confirm } = Modal;
@@ -26,8 +25,6 @@ const ProductGroupList = () => {
   const [userListData, setUserListData] = useState([]);
   const [accountId, setAccountId] = useState<string>('');
   const [isVisible, setIsVisible] = useState<boolean>(false);
-  const [channelList, setChannelList] = useState([]);
-
   const { resetFields: resetHandleFields, validateFields: validateHandleFields } = handleForm;
 
   useEffect(() => {
