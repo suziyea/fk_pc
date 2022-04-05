@@ -1,5 +1,5 @@
 import {
-  Button, Card, Tabs, Modal, Form, notification,
+  Button, Card, Modal, Form, notification,
 } from 'antd';
 import React, { useState, useEffect } from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
@@ -11,8 +11,6 @@ import BannerForm from './components/BannerForm';
 import {
   getBannerList, delBanner, addBanner, updateBanner,
 } from '@/services/api/other';
-
-const { TabPane } = Tabs;
 
 const AppContent: React.FC = () => {
   const [bannerForm] = Form.useForm();
@@ -41,10 +39,9 @@ const AppContent: React.FC = () => {
       st: submitData.st ? moment(submitData.st) : '',
       et: submitData.et ? moment(submitData.et) : '',
     };
-    console.log(submitForm);
-
     try {
       if (bannerId) {
+        submitForm.id = bannerId
         await updateBanner(submitForm);
       } else {
         await addBanner(submitForm);
@@ -65,9 +62,6 @@ const AppContent: React.FC = () => {
 
   const getBanner = async () => {
     const res = await getBannerList({});
-    // res[0] = res[0]?.splice(0, 10) || [];
-    console.log(res, '虚啊哈');
-
     setAllBannerList(res?.list);
   };
   const bannerToTop = async (status: number, id: string) => {
@@ -101,7 +95,6 @@ const AppContent: React.FC = () => {
       ...item,
       st: moment(item.st) || moment(item.created_at),
       et: moment(item.et) || '',
-      id: item.id
     });
     setIsBannerVisible(true);
   };
