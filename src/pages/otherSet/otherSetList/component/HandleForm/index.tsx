@@ -68,7 +68,7 @@ import {
             label="创建时间"
             name="created_at"
             rules={[{ required: true, message: '请输入创建时间' }]}>
-            <DatePicker format="YYYY-MM-DD HH:mm:ss" showTime={{ defaultValue: moment('00:00:00', 'HH:mm:ss') }} onChange={datePickerChange} />
+            <DatePicker disabled={ type === 'edit'} format="YYYY-MM-DD HH:mm:ss" showTime={{ defaultValue: moment('00:00:00', 'HH:mm:ss') }} onChange={datePickerChange} />
           </Item>
           </Col>
           <Col span={12}>

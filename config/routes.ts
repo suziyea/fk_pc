@@ -42,20 +42,14 @@
   {
     path: "content",
     code: "content",
-    name: "内容管理",
-    icon: "table",
+    name: "渠道管理",
+    icon: "NotificationOutlined",
     routes: [
       {
         path: "channelList",
         code: "channelList",
         name: "渠道列表",
         component: "./content/channelList",
-      },
-      {
-        path: "appContent",
-        code: "appContent",
-        name: "banner管理",
-        component: "./content/appContent",
       },
       {
         path: "addChannel",
@@ -92,7 +86,7 @@
     path: "otherSet",
     code: "otherSet",
     name: "otherSet",
-    icon: "PictureOutlined",
+    icon: "PayCircleOutlined",
     routes: [
       {
         path: "otherSetList",
@@ -100,6 +94,28 @@
         name: "otherSet列表",
         component: "./otherSet/otherSetList",
       },
+      { component: "./404" },
+    ],
+  },
+  {
+    path: "imageSet",
+    code: "imageSet",
+    name: "imageSet",
+    icon: "PictureOutlined",
+    routes: [
+      {
+        path: "bannerList",
+        code: "bannerList",
+        name: "banner列表",
+        component: "./imageSet/bannerList",
+      },
+      {
+        path: "imageSetList",
+        code: "imageSetList",
+        name: "图片列表",
+        component: "./imageSet/imageSetList",
+      },
+      
       { component: "./404" },
     ],
   },

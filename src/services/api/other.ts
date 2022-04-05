@@ -56,3 +56,21 @@ export function updateBanner(data: any) {
     data,
   });
 }
+
+// 图片集合
+export function getImageSet(data: any) {
+  return request({
+    url: '/api/admin/image-collection/search',
+    method: 'post',
+    data,
+  });
+}
+
+// 图片集合修改
+export function updateImageSet(data: any) {
+  return request({
+    url: '/api/admin/image-collection/update',
+    method: 'post',
+    data,
+  });
+}
