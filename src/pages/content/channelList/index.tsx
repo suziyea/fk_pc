@@ -186,6 +186,10 @@ const ChannelList = () => {
           columns={columns}
           dataSource={channelListData}
           request={async (params) => {
+            params.limit = params.pageSize;
+            params.page = params.pageIndex;
+            delete params.pageSize;
+            delete params.pageIndex;
             setChannelListData([]);
             const res = await getChannelList({
               ...params,

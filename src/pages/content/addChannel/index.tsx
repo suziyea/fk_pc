@@ -94,7 +94,7 @@ const AddChannel = () => {
                 ]}>
                 <InputLimited
                   style={{ maxWidth: '400px' }}
-                  placeholder="请输入名称"
+                  placeholder="请输入渠道名"
                   limited={40} />
               </Item>
 
