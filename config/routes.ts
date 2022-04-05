@@ -89,6 +89,21 @@
     ],
   },
   {
+    path: "otherSet",
+    code: "otherSet",
+    name: "otherSet",
+    icon: "PictureOutlined",
+    routes: [
+      {
+        path: "otherSetList",
+        code: "otherSetList",
+        name: "otherSet列表",
+        component: "./otherSet/otherSetList",
+      },
+      { component: "./404" },
+    ],
+  },
+  {
     path: "/",
     redirect: "/welcome",
   },
