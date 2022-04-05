@@ -75,7 +75,7 @@ const UploadWithCrop = ({
     <div>
       {uploading && <LoadingOutlined />}
       {/* 如果是单张上传则始终展示上传按钮 */}
-      {!uploading && (!multiple && (value || imageUrl) ? <img src={(typeof value === 'string' && value) || imageUrl || value.url} alt="banner" style={{ width: '100%', cursor: 'pointer' }} />
+      {!uploading && (!multiple && (value || imageUrl) ? <img src={ imageUrl || (typeof value === 'string' && value) || value.url} alt="banner" style={{ width: '100%', cursor: 'pointer' }} />
         : (
           <div style={{ overflow: 'hidden' }}>
             <PlusOutlined />
@@ -117,15 +117,12 @@ const UploadWithCrop = ({
 
   const uploadOperation = async (file: File) => {
     const formData = new FormData();
-    console.log(file);
     formData.append('file', file, file.name);
     formData.append('filename_length', file, '文件名');
     const res = await imgUpload(formData);
     notification.success({
       message: '上传成功',
     });
-    console.log('res上传公共',res);
-    
     return res;
   };
 
@@ -154,7 +151,6 @@ const UploadWithCrop = ({
         const fileType = file.type.replace('image/', '');
         const reader = new FileReader();
         reader.readAsDataURL(file);
-        console.log(file);
         reader.onload = () => {
           const image = new Image();
           image.src = reader.result as string;
@@ -216,9 +212,7 @@ const UploadWithCrop = ({
               const compressFile:File = await compressPngToJpg(blob);
               const res = await uploadOperation(compressFile);
               setIsCropVisible(false);
-    console.log('res上传公共217',res);
-
-              setImageUrl(res?.file);
+              setImageUrl(res?.path);
               if (multiple) {
                 triggerChange([...(value || []), {
                   uid: res?.file,
@@ -267,6 +261,7 @@ const UploadWithCrop = ({
         }
         px
       </p>
+      {value} ----
       <Modal
         visible={previewVisible}
         title="图片预览"
