@@ -97,11 +97,8 @@ const OtherSetList = () => {
     };
     try {
       if (accountId) {
-        // await updateProduct(submitForm);
-      } else {
         await updateOtherSet(submitForm)
-      }
-
+      } 
       notification.success({
         message: accountId ? '修改成功' : '新建成功',
       });
