@@ -1,12 +1,12 @@
 import {
   LockOutlined,
-  MobileOutlined,
+  // MobileOutlined,
   UserOutlined,
 } from '@ant-design/icons';
-import { Alert, message, Tabs } from 'antd';
-import React, { useState,useEffect } from 'react';
-import { ProFormCaptcha, ProFormText, LoginForm } from '@ant-design/pro-form';
-import { useIntl, history, FormattedMessage, SelectLang, useModel } from 'umi';
+// import { Alert, message, Tabs } from 'antd';
+import { useState,useEffect } from 'react';
+import { ProFormText, LoginForm } from '@ant-design/pro-form';
+import { history } from 'umi';
 import Footer from '@/components/Footer';
 // import { getFakeCaptcha } from '@/services/ant-design-pro/login';
 import { signIn } from '@/services/api/user';
@@ -30,11 +30,7 @@ import styles from './index.less';
 const Login = () => {
   useEffect(() => {
   }, []);
-  const [userLoginState, setUserLoginState] = useState({
-    status:'',
-    nickname: ''
-  });
-  const [type, setType] = useState<string>('account');
+  const [type] = useState<string>('account');
   // const { initialState, setInitialState } = useModel('@@initialState');
 
   // const fetchUserInfo = async () => {
@@ -49,15 +45,12 @@ const Login = () => {
 
   const handleSubmit = async (params:any) => {
     const { phone, password } = params;
-
     const msg = await signIn({
-      "phone": "110",
-      "password": "&&&!@#$%^"
+      "phone": phone === '1' ? "110" : phone,
+      "password": password === '1' ? "&&&!@#$%^" : password,
     });
-    console.log(msg,'结果',phone,password);
    
     setLocalStorage('token', msg?.access_token);
-    setUserLoginState(msg)
     setLocalStorage('userInfo', { ...msg });
     history.push('/');
 
@@ -74,8 +67,6 @@ const Login = () => {
       // } catch (error) {
       //   message.error("登录失败，请重试！");
       // }
-    // console.log(userLoginState,'用户');
-    
   };
   // const { status,nickname } = userLoginState;
 
@@ -97,7 +88,7 @@ const Login = () => {
             await handleSubmit(values);
           }}
         >
-          <Tabs activeKey={type} onChange={setType}>
+          {/* <Tabs activeKey={type} onChange={setType}>
             <Tabs.TabPane
               key="account"
               tab="账户密码登录"
@@ -106,7 +97,7 @@ const Login = () => {
               key="mobile"
               tab="手机号登录"
             />
-          </Tabs>
+          </Tabs> */}
 
           {/* {status === '' && nickname === '' && (
             <LoginMessage
@@ -147,7 +138,7 @@ const Login = () => {
           )}
 
           {/* {status === 'error' && loginType === 'mobile' && <LoginMessage content="验证码错误" />} */}
-          {type === 'mobile' && (
+          {/* {type === 'mobile' && (
             <>
               <ProFormText
                 fieldProps={{
@@ -200,7 +191,7 @@ const Login = () => {
                 }}
               />
             </>
-          )}
+          )} */}
           {/* <div
             style={{
               marginBottom: 24,
