@@ -149,9 +149,7 @@ const ProductGroupList = () => {
           formRef={roleForms}
           filter={{
             initialValues: {
-              selectkey: {
-                key: 'mobile',
-              },
+              
             },
             operation: [{
               key: 12,

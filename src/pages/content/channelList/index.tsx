@@ -154,9 +154,7 @@ const ChannelList = () => {
           scroll={{ x: 2600 }}
           filter={{
             initialValues: {
-              selectkey: {
-                key: 'mobile',
-              },
+              
             },
             operation: [{
               key: 1,
