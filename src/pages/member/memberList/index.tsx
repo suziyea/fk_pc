@@ -240,6 +240,10 @@ const ProductGroupList = () => {
           columns={columns}
           dataSource={userListData}
           request={async (params) => {
+            params.limit = params.pageSize;
+            params.page = params.pageIndex;
+            delete params.pageSize;
+            delete params.pageIndex;
             setUserListData([]);
             const res = await getMemberList({
               ...params,
