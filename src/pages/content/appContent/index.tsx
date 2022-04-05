@@ -101,6 +101,7 @@ const AppContent: React.FC = () => {
       ...item,
       st: moment(item.st) || moment(item.created_at),
       et: moment(item.et) || '',
+      id: item.id
     });
     setIsBannerVisible(true);
   };
