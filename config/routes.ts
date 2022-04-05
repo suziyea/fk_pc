@@ -54,7 +54,7 @@
       {
         path: "appContent",
         code: "appContent",
-        name: "移动端内容配置",
+        name: "banner管理",
         component: "./content/appContent",
       },
       {
