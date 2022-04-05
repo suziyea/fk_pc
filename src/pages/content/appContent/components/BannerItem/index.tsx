@@ -30,7 +30,7 @@ const BannerItem = ({
   return (
     <div className={styles['banner-item']}>
       <PhotoSlider
-        images={[{ src: item?.dataMap?.imageUrl }]}
+        images={[{ src: item?.image }]}
         visible={visible}
         onClose={() => setVisible(false)} />
       <div className={styles['banner-main']}>
@@ -39,10 +39,10 @@ const BannerItem = ({
           width="100%"
           height={200}
           style={{ objectFit: 'cover' }}
-          src={item?.dataMap?.imageUrl} />
+          src={item?.image} />
         <div className={styles['banner-button']}>
           <EyeOutlined className={styles['banner-icon']} onClick={() => setVisible(true)} />
-          <VerticalAlignTopOutlined
+          {/* <VerticalAlignTopOutlined
             className={styles['banner-icon']}
             onClick={() => confirm({
               content: '确认要置顶该banner配置？',
@@ -52,7 +52,7 @@ const BannerItem = ({
               onOk: () => {
                 bannerToTop(item.status, item.id);
               },
-            })} />
+            })} /> */}
           <EditOutlined className={styles['banner-icon']} onClick={() => editBanner(item)} />
           <DeleteOutlined
             className={styles['banner-icon']}
@@ -68,11 +68,11 @@ const BannerItem = ({
             })} />
         </div>
       </div>
-      <p className={styles['banner-title']}>{item.campaignName}</p>
+      <p className={styles['banner-title']}>{item.remark}</p>
       <p className={styles['banner-date']}>
-        {moment(item.startTime).format('yyyy-MM-DD')}
+        {moment(item.st).format('yyyy-MM-DD HH:mm:ss')}
         ~
-        {moment(item.endTime).format('yyyy-MM-DD')}
+        {item.et ? moment(item.et).format('yyyy-MM-DD HH:mm:ss') : '无限制'}
       </p>
     </div>
   );
