@@ -73,7 +73,7 @@ const otherSetForm = ({ form, type }: FormProps) => {
           </Item>
         </Col>
         <Col span={12}>
-          <Item label="图片" name="url" rules={[{ required: true, message: '请上传图片' }]}>
+          <Item label="图片" name="image" rules={[{ required: true, message: '请上传图片' }]}>
             <UploadWithCrop width={327} height={137} />
           </Item>
         </Col>
