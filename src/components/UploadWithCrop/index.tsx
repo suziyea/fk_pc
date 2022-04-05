@@ -261,7 +261,6 @@ const UploadWithCrop = ({
         }
         px
       </p>
-      {value} ----
       <Modal
         visible={previewVisible}
         title="图片预览"
