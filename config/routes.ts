@@ -74,6 +74,21 @@
     ],
   },
   {
+    path: "product",
+    code: "product",
+    name: "产品管理",
+    icon: "shop",
+    routes: [
+      {
+        path: "productList",
+        code: "productList",
+        name: "产品列表",
+        component: "./product/productList",
+      },
+      { component: "./404" },
+    ],
+  },
+  {
     path: "/",
     redirect: "/welcome",
   },
