@@ -61,7 +61,7 @@ import {
                   validator: validateTrim,
                 },
               ]}>
-                <Input placeholder="请输入编码" />
+                <Input disabled={ type === 'edit'} placeholder="请输入编码" />
             </Item>
 
           <Item

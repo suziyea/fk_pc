@@ -167,7 +167,7 @@ const OtherSetList = () => {
           }} />
       </Card>
 
-      <Modal width={900} title={`${accountId ? '编辑' : '新增'}getOtherSetList`} visible={isVisible} onOk={addOrUpdateRole} onCancel={() => setIsVisible(false)}>
+      <Modal width={900} title={`${accountId ? '编辑' : '新增'}OtherSet`} visible={isVisible} onOk={addOrUpdateRole} onCancel={() => setIsVisible(false)}>
         <HandleProductForm form={handleForm} type={accountId ? 'edit' : 'add'} />
       </Modal>
     </PageContainer>
