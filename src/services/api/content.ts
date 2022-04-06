@@ -5,6 +5,7 @@ export function getChannelList(data: any) {
   return request({
     url: '/api/admin/channel/search',
     method: 'post',
+    loading: true,
     data,
   });
 }
@@ -14,6 +15,7 @@ export function addChannel(data: any) {
   return request({
     url: '/api/admin/channel/save',
     method: 'post',
+    loading: true,
     data,
   });
 }
@@ -23,6 +25,7 @@ export function updateChannel(data: any) {
   return request({
     url: '/api/admin/channel/update',
     method: 'post',
+    loading: true,
     data,
   });
 }

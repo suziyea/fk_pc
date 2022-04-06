@@ -35,6 +35,7 @@ export function userEnabled(data: any) {
   return request<any>({
     url: `/api/admin/user/update-enabled`,
     method: 'post',
+    loading: true,
     data,
   });
 }

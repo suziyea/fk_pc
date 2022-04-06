@@ -14,17 +14,19 @@ export function updateOtherSet(data: any) {
   return request({
     url: '/api/admin/other-set/update',
     method: 'post',
+    loading: true,
     data,
   });
 }
 
 // banner 列表
 export function getBannerList(data: any) {
-    return request({
-      url: '/api/admin/banner/list',
-      method: 'post',
-      data,
-    });
+  return request({
+    url: '/api/admin/banner/list',
+    method: 'post',
+    loading: true,
+    data,
+  });
  }
 
 
@@ -33,6 +35,7 @@ export function delBanner(data: any) {
   return request({
     url: '/api/admin/banner/delete',
     method: 'post',
+    loading: true,
     data,
   });
 }
@@ -43,6 +46,7 @@ export function addBanner(data: any) {
   return request({
     url: '/api/admin/banner/save',
     method: 'post',
+    loading: true,
     data,
   });
 }
@@ -53,6 +57,7 @@ export function updateBanner(data: any) {
   return request({
     url: '/api/admin/banner/update',
     method: 'post',
+    loading: true,
     data,
   });
 }
@@ -62,6 +67,7 @@ export function getImageSet(data: any) {
   return request({
     url: '/api/admin/image-collection/search',
     method: 'post',
+    loading: true,
     data,
   });
 }
@@ -71,6 +77,7 @@ export function updateImageSet(data: any) {
   return request({
     url: '/api/admin/image-collection/update',
     method: 'post',
+    loading: true,
     data,
   });
 }
