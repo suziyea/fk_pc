@@ -12,12 +12,12 @@ export function getMemberList(data: any) {
 
 
 export function updateImg(data: any) {
-    return request({
-      url: '/api/admin/image-collection/update',
-      method: 'post',
-      loading: true,
-      data,
-    });
+  return request({
+    url: '/api/admin/image-collection/update',
+    method: 'post',
+    loading: true,
+    data,
+  });
   }
 
 export function getChannelList(data: any) {

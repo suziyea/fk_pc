@@ -71,6 +71,7 @@ const ImagesSetList = () => {
             resetHandleFields();
             handleForm.setFieldsValue({
               ...record,
+              image: record.url,
               created_at: moment(record?.created_at),
             });
             setAccountId(record.id);
