@@ -13,6 +13,6 @@ export default defineConfig({
     babelOptions: {},
   },
   define: {
-    API_SERVER: "http://47.103.96.51", // 接口服务地址
+    API_SERVER: "https://api.shcwwl.cn", // 接口服务地址
   },
 });
