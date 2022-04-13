@@ -61,10 +61,6 @@ import {
                 {
                   validator: validateTrim,
                 },
-                {
-                  pattern: /^[0-9]*[1-9][0-9]*$/,
-                  message: '只能输入正整数',
-                },
               ]}>
               <InputLimited
                 style={{ maxWidth: '400px' }}
