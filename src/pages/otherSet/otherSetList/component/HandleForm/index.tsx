@@ -72,10 +72,10 @@ import {
           </Col>
           <Col span={12}>
             <Item
-              label="otherSetKey"
-              name="remark"
+              label="OtherSet 值"
+              name="value"
               rules={[
-                { required: true, message: '请输入otherSetKey' },
+                { required: true, message: '请输入OtherSet 值' },
                 {
                   validator: validateEmoji,
                 },
@@ -83,14 +83,14 @@ import {
                   validator: validateTrim,
                 },
               ]}>
-                <Input placeholder="请输入otherSetKey" />
+                <Input placeholder="请输入OtherSet 值" />
             </Item>
 
             <Item
-              label="otherSetValue"
-              name="value"
+              label="描述"
+              name="remark"
               rules={[
-                { required: true, message: '请输入otherSetValue' },
+                { required: true, message: '请输入描述' },
                 {
                   validator: validateEmoji,
                 },
@@ -98,8 +98,9 @@ import {
                   validator: validateTrim,
                 },
               ]}>
-                <Input placeholder="请输入otherSetValue" />
+                <Input placeholder="请输入描述" />
             </Item>
+
           </Col>
         </Row>
         {
