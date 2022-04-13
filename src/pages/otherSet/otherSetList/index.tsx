@@ -76,6 +76,7 @@ const OtherSetList = () => {
             resetHandleFields();
             handleForm.setFieldsValue({
               ...record,
+              value: record?.value?.value,
               created_at: moment(record?.created_at),
             });
             setAccountId(record.id);
@@ -93,6 +94,9 @@ const OtherSetList = () => {
     const submitData = await validateHandleFields();
     const submitForm = {
       ...submitData,
+      value: {
+        value: submitData?.value || ''
+      },
       created_at: moment(submitData?.created_at).format('YYYY-MM-DD HH:mm:ss')
     };
     try {

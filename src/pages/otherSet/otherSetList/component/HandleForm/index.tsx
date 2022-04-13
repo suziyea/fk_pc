@@ -5,7 +5,6 @@ import {
   import { validateEmoji, validateTrim } from '@/utils/validator';
   import moment from 'moment';
   const { Item } = Form;
-  const { TextArea } = Input;
   
   interface FormProps {
     form: FormInstance<any>,
@@ -73,15 +72,33 @@ import {
           </Col>
           <Col span={12}>
             <Item
-              label="描述"
+              label="otherSetKey"
               name="remark"
-              rules={[{ required: true, message: '请输入描述' }]}>
-              <TextArea
-                placeholder="描述"
-                style={{ maxWidth: '500px' }}
-                rows={4}
-                showCount
-                maxLength={500} />
+              rules={[
+                { required: true, message: '请输入otherSetKey' },
+                {
+                  validator: validateEmoji,
+                },
+                {
+                  validator: validateTrim,
+                },
+              ]}>
+                <Input placeholder="请输入otherSetKey" />
+            </Item>
+
+            <Item
+              label="otherSetValue"
+              name="value"
+              rules={[
+                { required: true, message: '请输入otherSetValue' },
+                {
+                  validator: validateEmoji,
+                },
+                {
+                  validator: validateTrim,
+                },
+              ]}>
+                <Input placeholder="请输入otherSetValue" />
             </Item>
           </Col>
         </Row>
