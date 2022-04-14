@@ -81,3 +81,13 @@ export function updateImageSet(data: any) {
     data,
   });
 }
+
+// 反馈
+export function getFeedback(data: any) {
+  return request({
+    url: '/api/admin/feedback/search',
+    method: 'post',
+    loading: true,
+    data,
+  });
+}

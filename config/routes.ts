@@ -120,6 +120,28 @@
     ],
   },
   {
+    path: "feedback",
+    code: "feedback",
+    name: "反馈管理",
+    icon: "SolutionOutlined",
+    routes: [
+      {
+        path: "feedbackList",
+        code: "feedbackList",
+        name: "反馈列表",
+        component: "./feedback/feedbackList",
+      },
+      {
+        path: "feedbackDetail",
+        code: "feedbackDetail",
+        name: "反馈详情",
+        hideInMenu: true,
+        component: "./feedback/feedbackDetail",
+      },
+      { component: "./404" },
+    ],
+  },
+  {
     path: "/",
     redirect: "/welcome",
   },
