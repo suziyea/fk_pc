@@ -57,13 +57,11 @@ const ProductGroupList = () => {
     title: '姓名',
     dataIndex: 'actual_name',
     key: 'actual_name',
-    fixed: 'left',
   }, 
   {
     title: '身份证号',
     dataIndex: 'id_number',
     key: 'id_number',
-    fixed: 'left',
   },
   {
     title: '用户状态',
@@ -85,25 +83,25 @@ const ProductGroupList = () => {
     title: '注册时间',
     dataIndex: 'created_at',
     key: 'created_at',
-    render: (text: any) => moment.tz(text, "Asia/Shanghai").format("YYYY-MM-DD HH:mm:ss"),
+    render: (text: any) => text ? moment.tz(text, "Asia/Shanghai").format("YYYY-MM-DD HH:mm:ss") : '',
   },
   {
     title: '上次登录时间',
     dataIndex: 'last_login',
     key: 'last_login',
-    render: (text: any) =>  moment.tz(text).format('YYYY-MM-DD HH:mm:ss'),
+    render: (text: any) =>  text ? moment.tz(text, "Asia/Shanghai").format('YYYY-MM-DD HH:mm:ss') : '',
   },
   {
     title: '第一笔付费时间',
     dataIndex: 'first_pay_time',
     key: 'first_pay_time',
-    render: (text: any) =>  moment.tz(text).format('YYYY-MM-DD HH:mm:ss'),
+    render: (text: any) =>  text ? moment.tz(text, "Asia/Shanghai").format('YYYY-MM-DD HH:mm:ss') : '',
   },
   {
     title: '第二笔付费时间',
     dataIndex: 'second_pay_time',
     key: 'second_pay_time',
-    render: (text: any) =>  moment.tz(text).format('YYYY-MM-DD HH:mm:ss'),
+    render: (text: any) =>  text ? moment.tz(text, "Asia/Shanghai").format('YYYY-MM-DD HH:mm:ss') : '',
   },
   
   {
