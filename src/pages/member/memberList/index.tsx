@@ -3,9 +3,10 @@ import {
   useState, useRef, useEffect,
 } from 'react';
 import {
-  Card, Form, Badge, Space, Typography, Modal, notification,
+  Card, Form, Space, Typography, Modal, notification,
 } from 'antd';
 import moment from 'moment';
+import { mapEnum } from '@/utils';
 
 import HarTable from '@/components/HarTable';
 import { actionRefHandle } from '@/components/HarTable/types';
@@ -49,49 +50,25 @@ const ProductGroupList = () => {
     title: '手机',
     dataIndex: 'phone',
     key: 'phone',
+    fixed: 'left',
   },
   {
     title: '姓名',
     dataIndex: 'actual_name',
     key: 'actual_name',
+    fixed: 'left',
   }, 
   {
     title: '身份证号',
     dataIndex: 'id_number',
     key: 'id_number',
+    fixed: 'left',
   },
   {
     title: '用户状态',
     dataIndex: 'status',
     key: 'status',
-    render: (text: number) => (
-      <>
-        {
-          text === 1 && (
-            <>
-              <Badge status="default" />
-              <span>已注册</span>
-            </>
-          )
-        }
-        {
-          text === 2 && (
-            <>
-              <Badge status="success" />
-              <span>已实名</span>
-            </>
-          )
-        }
-        {
-          text === 3 && (
-            <>
-              <Badge status="processing" />
-              <span>已停用</span>
-            </>
-          )
-        }
-      </>
-    ),
+    render: (text: number) => (text ? mapEnum((text)+'', userStatusEnum) : ''),
   },
   {
     title: '渠道',
@@ -132,6 +109,7 @@ const ProductGroupList = () => {
   {
     title: '操作',
     key: 'operation',
+    fixed: 'right',
     render: (_: any, record: any) => (
       <Space size="middle">
         <Link
@@ -192,6 +170,7 @@ const ProductGroupList = () => {
         <HarTable
           actionRef={actionRef}
           formRef={roleForms}
+          scroll={{ x: 2600 }}
           filter={{
             initialValues: {
               selectkey: {
@@ -222,7 +201,7 @@ const ProductGroupList = () => {
               }, {
                 key: 2,
                 prop: 'channel_id',
-                placeholder: '全部下单渠道',
+                placeholder: '渠道',
                 options: channelList,
               }, {
                 key: 3,
