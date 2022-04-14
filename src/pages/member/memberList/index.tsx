@@ -5,7 +5,8 @@ import {
 import {
   Card, Form, Space, Typography, Modal, notification,
 } from 'antd';
-import moment from 'moment';
+// import moment from 'moment';
+import moment from 'moment-timezone'
 import { mapEnum } from '@/utils';
 
 import HarTable from '@/components/HarTable';
@@ -75,7 +76,6 @@ const ProductGroupList = () => {
     dataIndex: 'channel',
     key: 'channel',
     render: (text: any,record:any) => {
-      console.log(text);
       return (
         record?.channel ? (`${record?.channel?.name || ''} - ${record?.channel?.code || ''}`) : null
       )
@@ -85,25 +85,25 @@ const ProductGroupList = () => {
     title: '注册时间',
     dataIndex: 'created_at',
     key: 'created_at',
-    render: (text: any) => moment(text).format('YYYY-MM-DD HH:mm:ss'),
+    render: (text: any) => moment.tz(text, "Asia/Shanghai").format("YYYY-MM-DD HH:mm:ss"),
   },
   {
     title: '上次登录时间',
     dataIndex: 'last_login',
     key: 'last_login',
-    render: (text: any) => moment(text).format('YYYY-MM-DD HH:mm:ss'),
+    render: (text: any) =>  moment.tz(text).format('YYYY-MM-DD HH:mm:ss'),
   },
   {
     title: '第一笔付费时间',
     dataIndex: 'first_pay_time',
     key: 'first_pay_time',
-    render: (text: any) => moment(text).format('YYYY-MM-DD HH:mm:ss'),
+    render: (text: any) =>  moment.tz(text).format('YYYY-MM-DD HH:mm:ss'),
   },
   {
     title: '第二笔付费时间',
     dataIndex: 'second_pay_time',
     key: 'second_pay_time',
-    render: (text: any) => moment(text).format('YYYY-MM-DD HH:mm:ss'),
+    render: (text: any) =>  moment.tz(text).format('YYYY-MM-DD HH:mm:ss'),
   },
   
   {
