@@ -37,20 +37,17 @@ const ProductGroupList = () => {
     dataIndex: 'id',
     key: 'id',
     width: 80,
-    fixed: 'left',
   },
   {
     title: '名称',
     dataIndex: 'name',
     key: 'name',
-    fixed: 'left',
   },
   {
     title: '产品图标',
     dataIndex: 'logo',
     key: 'logo',
     width: 130,
-    fixed: 'left',
     render: (text: string) => <img style={{ width: '36px' }} src={text} alt="icon" />,
   },
   {

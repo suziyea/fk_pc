@@ -5,8 +5,7 @@ import {
 import {
   Card, Form, Space, Typography, Modal, notification,
 } from 'antd';
-// import moment from 'moment';
-import moment from 'moment-timezone'
+import moment from 'moment';
 import { mapEnum } from '@/utils';
 
 import HarTable from '@/components/HarTable';
@@ -51,7 +50,7 @@ const ProductGroupList = () => {
     title: '手机',
     dataIndex: 'phone',
     key: 'phone',
-    fixed: 'left',
+    // fixed: 'left',
   },
   {
     title: '姓名',
@@ -83,30 +82,47 @@ const ProductGroupList = () => {
     title: '注册时间',
     dataIndex: 'created_at',
     key: 'created_at',
-    render: (text: any) => text ? moment.tz(text, "Asia/Shanghai").format("YYYY-MM-DD HH:mm:ss") : '',
+    render: (text: any) => {
+      let date = new Date(text)
+      let num = date.getTime()
+      return text ? moment(num).format("YYYY-MM-DD HH:mm:ss") : ''
+    },
   },
   {
     title: '上次登录时间',
     dataIndex: 'last_login',
     key: 'last_login',
-    render: (text: any) =>  text ? moment.tz(text, "Asia/Shanghai").format('YYYY-MM-DD HH:mm:ss') : '',
+    render: (text: any) =>  {
+      let date = new Date(text)
+      let num = date.getTime()
+      return text ? moment(num).format("YYYY-MM-DD HH:mm:ss") : ''
+    },
   },
   {
     title: '第一笔付费时间',
     dataIndex: 'first_pay_time',
     key: 'first_pay_time',
-    render: (text: any) =>  text ? moment.tz(text, "Asia/Shanghai").format('YYYY-MM-DD HH:mm:ss') : '',
+    render: (text: any) =>  {
+      let date = new Date(text)
+      let num = date.getTime()
+      return text ? moment(num).format("YYYY-MM-DD HH:mm:ss") : ''
+    },
   },
   {
     title: '第二笔付费时间',
     dataIndex: 'second_pay_time',
     key: 'second_pay_time',
-    render: (text: any) =>  text ? moment.tz(text, "Asia/Shanghai").format('YYYY-MM-DD HH:mm:ss') : '',
+    render: (text: any) =>  {
+      let date = new Date(text)
+      let num = date.getTime()
+      return text ? moment(num).format("YYYY-MM-DD HH:mm:ss") : ''
+    },
   },
   
   {
     title: '操作',
     key: 'operation',
+    width: 120,
     fixed: 'right',
     render: (_: any, record: any) => (
       <Space size="middle">

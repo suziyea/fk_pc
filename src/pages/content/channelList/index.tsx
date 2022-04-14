@@ -33,20 +33,17 @@ const ChannelList = () => {
     dataIndex: 'id',
     key: 'id',
     ellipsis: true,
-    fixed: 'left',
   },
   {
     title: '菜单图标',
     dataIndex: 'logo',
     key: 'logo',
-    fixed: 'left',
     render: (text: string) => <img style={{ width: '36px' }} src={text} alt="icon" />,
   },
   {
     title: '名称',
     dataIndex: 'name',
     key: 'name',
-    fixed: 'left',
   },
   {
     title: '注册时间',
