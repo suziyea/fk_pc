@@ -90,6 +90,7 @@ const AppContent: React.FC = () => {
   };
 
   const editBanner = async (item: any) => {
+    resetBannerFields()
     setBannerId(item.id);
     bannerForm.setFieldsValue({
       ...item,
