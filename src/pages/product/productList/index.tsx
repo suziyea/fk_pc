@@ -36,18 +36,21 @@ const ProductGroupList = () => {
     title: 'id',
     dataIndex: 'id',
     key: 'id',
-    width: 100,
+    width: 80,
+    fixed: 'left',
   },
   {
     title: '名称',
     dataIndex: 'name',
     key: 'name',
+    fixed: 'left',
   },
   {
     title: '产品图标',
     dataIndex: 'logo',
     key: 'logo',
     width: 130,
+    fixed: 'left',
     render: (text: string) => <img style={{ width: '36px' }} src={text} alt="icon" />,
   },
   {
@@ -78,7 +81,7 @@ const ProductGroupList = () => {
     title: '备注',
     dataIndex: 'remark',
     key: 'remark',
-    width: 180,
+    width: 200,
     ellipsis: true,
     render: (text: string) => (
       <Tooltip title={text}>
@@ -89,7 +92,8 @@ const ProductGroupList = () => {
   {
     title: '操作',
     key: 'operation',
-    width: 120,
+    width: 160,
+    fixed: 'right',
     render: (_: any, record: any) => (
       <Space size="middle">
         <Link
@@ -162,6 +166,7 @@ const ProductGroupList = () => {
         <HarTable
           actionRef={actionRef}
           formRef={roleForms}
+          scroll={{ x: 1600 }}
           filter={{
             initialValues: {
               
