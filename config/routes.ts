@@ -11,6 +11,11 @@
             path: "/user/login",
             component: "./user/Login",
           },
+          {
+            name: "修改密码",
+            path: "/user/password",
+            component: "./user/password",
+          },
         ],
       },
       {

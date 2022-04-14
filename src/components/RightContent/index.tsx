@@ -37,10 +37,10 @@ const RightContent: React.FC = () => {
 
         return;
       }
-      // if (key === 'password') {
-      //   history.push(`/user/${key}`);
-      //   return;
-      // }
+      if (key === 'password') {
+        history.push(`/user/${key}`);
+        return;
+      }
       history.push(`/account/${key}`);
     },
     [],
@@ -67,10 +67,10 @@ const RightContent: React.FC = () => {
 
   const menuHeaderDropdown = (
     <Menu className={styles.menu} selectedKeys={[]} onClick={onMenuClick}>
-      {/* <Menu.Item key="password">
+      <Menu.Item key="password">
         <ToolOutlined />
         修改密码
-      </Menu.Item> */}
+      </Menu.Item>
       <Menu.Item key="logout">
         <LogoutOutlined />
         退出登录

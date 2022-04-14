@@ -47,7 +47,7 @@ const Login = () => {
     const { phone, password } = params;
     const msg = await signIn({
       "phone": phone === '1' ? "110" : phone,
-      "password": password === '1' ? "&&&!@#$%^" : password,
+      "password": password === '1' ? "111111" : password,
     });
    
     setLocalStorage('token', msg?.access_token);

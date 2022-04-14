@@ -39,3 +39,12 @@ export function userEnabled(data: any) {
     data,
   });
 }
+
+// 更新密码
+export function updatePwd(data: any) {
+  return request<any>({
+    url: '/api/admin/admin/update-password',
+    method: 'post',
+    data,
+  });
+}
