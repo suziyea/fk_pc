@@ -28,6 +28,7 @@ import {
           message: '修改成功',
         });
         localStorage.removeItem('token');
+        localStorage.removeItem('userInfo');
       } catch (error) {
         console.log(error);
         return;
