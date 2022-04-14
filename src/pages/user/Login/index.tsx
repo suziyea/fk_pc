@@ -78,7 +78,7 @@ const Login = () => {
       </div> */}
       <div className={styles.content}>
         <LoginForm
-          logo={<img alt="logo" src="/logo.svg" />}
+          logo={<img alt="logo" src="/icon_logo.png" />}
           title="登 录"
           subTitle="欢迎使用 管理后台系统"
           initialValues={{
