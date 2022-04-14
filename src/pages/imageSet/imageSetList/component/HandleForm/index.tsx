@@ -73,9 +73,20 @@ const otherSetForm = ({ form, type }: FormProps) => {
           </Item>
         </Col>
         <Col span={12}>
-          <Item label="图片" name="image" rules={[{ required: true, message: '请上传图片' }]}>
-            <UploadWithCrop width={327} height={137} />
+          <Item
+            noStyle
+            shouldUpdate={(prevValues, currentValues) => prevValues.code !== currentValues.code}>
+            {({ getFieldValue }) => ((getFieldValue('code') !== 'opening_page_image') ? (
+              <Item label="图片" name="image" rules={[{ required: true, message: '请上传图片' }]}>
+                <UploadWithCrop width={328} height={137} />
+              </Item>
+            ) : (
+              <Item label="图片" name="image" rules={[{ required: true, message: '请上传图片' }]}>
+                <UploadWithCrop width={360} height={640} />
+              </Item>
+            ))}
           </Item>
+
         </Col>
       </Row>
       {

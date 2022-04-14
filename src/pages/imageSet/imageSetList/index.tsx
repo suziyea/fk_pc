@@ -47,7 +47,8 @@ const ImagesSetList = () => {
     dataIndex: 'url',
     key: 'url',
     width: 300,
-    render: (text: string) => <img style={{ width: '200px' }} src={text} alt="" />,
+    render: (text: string) => <img style={{ width: '120px' , height: '120px'}} src={text} alt="icon" />,
+
   },
   {
     title: '编码',
