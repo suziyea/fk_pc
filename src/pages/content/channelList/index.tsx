@@ -3,7 +3,7 @@ import {
   useState, useRef, useEffect,
 } from 'react';
 import {
-  Card, Form, Space, Typography,
+  Card, Form, Typography,
 } from 'antd';
 import { useHistory } from 'umi';
 
@@ -29,16 +29,10 @@ const ChannelList = () => {
   }, []);
 
   const columns = [{
-    title: 'id',
+    title: '序号',
     dataIndex: 'id',
     key: 'id',
-    ellipsis: true,
-  },
-  {
-    title: '菜单图标',
-    dataIndex: 'logo',
-    key: 'logo',
-    render: (text: string) => <img style={{ width: '36px' }} src={text} alt="icon" />,
+    width: 80
   },
   {
     title: '名称',
@@ -46,99 +40,16 @@ const ChannelList = () => {
     key: 'name',
   },
   {
+    title: 'Link',
+    dataIndex: 'link',
+    key: 'link',
+  },
+  {
     title: '注册时间',
     dataIndex: 'created_at',
     key: 'created_at',
-    width: 220,
+    width: 200,
     render: (text: any) => moment(text).format('YYYY-MM-DD HH:mm:ss'),
-  },
-  {
-    title: '付款转化率',
-    dataIndex: 'pay_convert_percent',
-    key: 'pay_convert_percent',
-  }, {
-    title: '渠道UV',
-    dataIndex: 'number_visit',
-    key: 'number_visit',
-  },
-  {
-    title: '注册量',
-    dataIndex: 'register_user_count',
-    key: 'register_user_count',
-  },
-  {
-    title: '登录',
-    dataIndex: 'number_visit',
-    key: 'number_visit',
-    render: (text: any) => '暂无',
-  },
-  {
-    title: '资料认证',
-    dataIndex: 'band_card_user_count',
-    key: 'band_card_user_count',
-  },
-  {
-    title: '签约',
-    dataIndex: 'verified_user_count',
-    key: 'verified_user_count',
-  },
-  {
-    title: '订单数',
-    dataIndex: 'initiate_debit',
-    key: 'initiate_debit',
-  },
-  {
-    title: '未输入验证码',
-    dataIndex: 'first_no_verification_code_user_count',
-    key: 'first_no_verification_code_user_count',
-    width: 220,
-  },
-  {
-    title: '付款数',
-    dataIndex: 'first_pay_count',
-    key: 'first_pay_count',
-  },
-  {
-    title: '付费金额',
-    dataIndex: 'first_pay_amount',
-    key: 'first_pay_amount',
-  },
-  {
-    title: '二次付款人数',
-    dataIndex: 'second_pay_count',
-    key: 'second_pay_count',
-  },
-  {
-    title: '二次付费金额',
-    dataIndex: 'second_pay_amount',
-    key: 'second_pay_amount',
-  },
-  {
-    title: '操作',
-    key: 'operation',
-    fixed: 'right',
-    render: (_: any, record: any) => (
-      <Space size="middle">
-        <Link
-          className="link-color"
-          onClick={() => {
-            removeSessionStorage('channelStorage');
-            setSessionStorage('channelStorage', record);
-            history.push(`addChannel?edit=${record.id || ''}&name=${record.name}`);
-          }}>
-          编辑
-        </Link>
-        <Link
-          className="link-color"
-          onClick={() => {
-            removeSessionStorage('channelDetailsStorage');
-            setSessionStorage('channelDetailsStorage', record);
-            history.push(`channelDetail?edit=${record.id || ''}&name=${record.name}`);
-          }}>
-          详情
-        </Link>
-      </Space>
-    ),
   }];
   const disabledDate = (current: any) => (current && current > moment().endOf('day'));
 
@@ -148,7 +59,6 @@ const ChannelList = () => {
         <HarTable
           actionRef={actionRef}
           formRef={channelForms}
-          scroll={{ x: 2600 }}
           filter={{
             initialValues: {
               

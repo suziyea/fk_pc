@@ -29,3 +29,23 @@ export function updateChannel(data: any) {
     data,
   });
 }
+
+// 全渠道数据统计
+export function getChannelTotalList(data: any) {
+  return request({
+    url: '/api/admin/channel/data-statistics',
+    method: 'post',
+    loading: true,
+    data,
+  });
+}
+
+// 全渠道数据总统计
+export function getChannelTotalAllList(data: any) {
+  return request({
+    url: '/api/admin/channel/data-summary-statistics',
+    method: 'post',
+    loading: true,
+    data,
+  });
+}

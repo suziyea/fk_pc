@@ -50,7 +50,7 @@ const ProductGroupList = () => {
     title: '手机',
     dataIndex: 'phone',
     key: 'phone',
-    // fixed: 'left',
+    fixed: 'left',
   },
   {
     title: '姓名',

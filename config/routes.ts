@@ -57,6 +57,18 @@
         component: "./content/channelList",
       },
       {
+        path: "channelAllList",
+        code: "channelAllList",
+        name: "全渠道数据统计",
+        component: "./content/channelAllList",
+      },
+      {
+        path: "channelTotalAllList",
+        code: "channelTotalAllList",
+        name: "全渠道数据总统计",
+        component: "./content/channelTotalAllList",
+      },
+      {
         path: "addChannel",
         code: "addChannel",
         name: "新建渠道",

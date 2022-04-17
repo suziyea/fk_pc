@@ -128,11 +128,11 @@ const AddChannel = () => {
                   maxLength={500} />
               </Item>
             </Col>
-            <Col span={12}>
+            {/* <Col span={12}>
               <Item label="logo" name="logo" rules={[{ required: true, message: '请上传logo' }]}>
                 <UploadWithCrop width={80} height={80} />
               </Item>
-            </Col>
+            </Col> */}
           </Row>
           {query?.edit && (
             <>
