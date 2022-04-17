@@ -52,8 +52,8 @@ const ChannelList = () => {
   },
   {
     title: '用户登录数',
-    dataIndex: 'number_visit',
-    key: 'number_visit',
+    dataIndex: 'new_login_user_count',
+    key: 'new_login_user_count',
     align: 'center',
     width: 60,
   },

@@ -50,7 +50,7 @@ const ProductGroupList = () => {
     title: '手机',
     dataIndex: 'phone',
     key: 'phone',
-    fixed: 'left',
+    // fixed: 'left',
   },
   {
     title: '姓名',
@@ -184,7 +184,7 @@ const ProductGroupList = () => {
         <HarTable
           actionRef={actionRef}
           formRef={roleForms}
-          scroll={{ x: 2600 }}
+          scroll={{ x: 1888 }}
           filter={{
             initialValues: {
               selectkey: {
