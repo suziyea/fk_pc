@@ -137,7 +137,7 @@ const ProductGroupList = () => {
                 cancelText: '取消',
                 onOk: async () => {
                   await userEnabled({
-                    id: [record.id],
+                    id: record.id,
                   });
                   notification.success({
                     message: `${(record.enabled) ? '停用' : '启用'}成功`,
