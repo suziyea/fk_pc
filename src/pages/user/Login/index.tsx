@@ -46,8 +46,8 @@ const Login = () => {
   const handleSubmit = async (params:any) => {
     const { phone, password } = params;
     const msg = await signIn({
-      "phone": phone === '1' ? "110" : phone,
-      "password": password === '1' ? "111111" : password,
+      "phone": phone === '1' ? "admin" : phone,
+      "password": password === '1' ? "&&&!@#$%^" : password,
     });
    
     setLocalStorage('token', msg?.access_token);

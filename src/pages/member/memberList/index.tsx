@@ -191,21 +191,6 @@ const ProductGroupList = () => {
                 key: 'mobile',
               },
             },
-            // operation: [{
-            //   key: 1,
-            //   type: 'primary',
-            //   label: '新增会员',
-            //   auth: 'addAccountBtn',
-            //   onClick: () => {
-            //     setAccountId('');
-            //     resetHandleFields();
-            //     handleForm.setFieldsValue({
-            //       isDisabled: true,
-            //     });
-            //     setIsVisible(true);
-            //   },
-            // }],
-
             filterItem: [
               {
                 key: 1,
