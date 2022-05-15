@@ -41,6 +41,12 @@
         name: "会员列表",
         component: "./member/memberList",
       },
+      {
+        path: "orderList",
+        code: "orderList",
+        name: "订单列表",
+        component: "./member/orderList",
+      },
       { component: "./404" },
     ],
   },

@@ -28,3 +28,12 @@ export function getChannelList(data: any) {
     data,
   });
 }
+
+export function getOrderlList(data: any) {
+  return request({
+    url: '/api/admin/user-order/list',
+    method: 'post',
+    loading: true,
+    data,
+  });
+}

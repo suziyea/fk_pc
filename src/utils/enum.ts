@@ -44,3 +44,31 @@ export const userStatusEnum = [
     value: '5'
   }
 ]
+
+// 支付类型
+export const orderTypeOption = [
+  {
+    label: '第一笔',
+    value: '1'
+  },
+  {
+    label: '第二笔',
+    value: '2'
+  },
+];
+
+// 支付状态
+export const payStatusOption = [
+  {
+    label: '已支付',
+    value: '1'
+  },
+  {
+    label: '未支付',
+    value: '2'
+  },
+  {
+    label: '取消',
+    value: '3'
+  },
+];
