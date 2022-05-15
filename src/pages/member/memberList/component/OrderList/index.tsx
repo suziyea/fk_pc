@@ -22,14 +22,14 @@ const OrderList = ({userId}:any) => {
     const res = await getOrderlList({
       user_id:userId,
     });
-    setOrderListData(res || []);
+    if (res.length > 0 ) {
+      setOrderListData(res);
+      return;
+    }
+    setOrderListData([]);
   }
 
-  const columns = [{
-    title: 'id',
-    dataIndex: 'id',
-    key: 'id',
-  },
+  const columns = [
   {
     title: '付款类型',
     dataIndex: 'order_type',
@@ -85,7 +85,7 @@ const OrderList = ({userId}:any) => {
 
   return (
       <div className={styles.container_table}>
-          <Table scroll={{ x: 1600 }} rowKey="id" pagination={false} columns={columns} dataSource={orderListData} />
+          <Table scroll={{ x: 1400 }} rowKey="id" pagination={false} columns={columns} dataSource={orderListData} />
       </div>
   );
 };
