@@ -11,6 +11,8 @@ import styles from './index.less';
 import HarTable from '@/components/HarTable';
 import { actionRefHandle } from '@/components/HarTable/types';
 import RoleForm from './component/HandleForm';
+import OrderList from './component/OrderList';
+
 import {
   getMemberList,getChannelList
 } from '@/services/api/member';
@@ -28,6 +30,9 @@ const ProductGroupList = () => {
   const [userListData, setUserListData] = useState([]);
   const [accountId, setAccountId] = useState<string>('');
   const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [isPayVisible, setIsPayVisible] = useState<boolean>(false);
+  const [selectUserId, setSelectUserId] = useState<string>('');
+
   const [channelList, setChannelList] = useState([]);
 
   const { resetFields: resetHandleFields, validateFields: validateHandleFields } = handleForm;
@@ -122,7 +127,6 @@ const ProductGroupList = () => {
   {
     title: '操作',
     key: 'operation',
-    width: 120,
     fixed: 'right',
     render: (_: any, record: any) => (
       <Space size="middle">
@@ -148,6 +152,12 @@ const ProductGroupList = () => {
             );
           }}>
           {(record.enabled) ? '停用' : '启用'}
+        </Link>
+        <Link className="link-color" onClick={() => {
+          setSelectUserId(record.id)
+          setIsPayVisible(true)
+        }}>
+          支付详情
         </Link>
       </Space>
     ),
@@ -238,6 +248,13 @@ const ProductGroupList = () => {
       <Modal width={900} title={`${accountId ? '编辑' : '新增'}会员`} visible={isVisible} onOk={addOrUpdateRole} onCancel={() => setIsVisible(false)}>
         <RoleForm form={handleForm} type={accountId ? 'edit' : 'add'} />
       </Modal>
+      <Modal width={900} title="支付详情" visible={isPayVisible} footer={null} onCancel={() => {
+        setIsPayVisible(false)
+        setSelectUserId('')
+      }}>
+        <OrderList userId={selectUserId}></OrderList>
+      </Modal>
+
     </PageContainer>
   );
 };
