@@ -7,7 +7,7 @@ import {
 } from 'antd';
 import moment from 'moment';
 import { mapEnum } from '@/utils';
-
+import styles from './index.less';
 import HarTable from '@/components/HarTable';
 import { actionRefHandle } from '@/components/HarTable/types';
 import RoleForm from './component/HandleForm';
@@ -180,7 +180,7 @@ const ProductGroupList = () => {
 
   return (
     <PageContainer>
-      <Card>
+      <Card className={styles.container_table}>
         <HarTable
           actionRef={actionRef}
           formRef={roleForms}
