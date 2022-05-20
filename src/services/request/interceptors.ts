@@ -50,19 +50,6 @@ export async function responseInterceptors(response: MyHttp.Response): Promise<a
   if (res.code === 100000) {
     return res.data;
   }
-
-  if (res.code === 110401) {
-    notification.error({
-      message: '登录失效，请重新登录',
-    });
-    removeLocalStorage('token');
-    removeLocalStorage('userInfo');
-    history.replace({
-      pathname: '/user/login',
-    });
-    return
-  }
-
   if (res.code == null) {
     console.error(`注意：接口"${response.config.url}"未按前端标准返回数据结构，请提醒后端及时修改`);
     return response.data;
@@ -83,15 +70,13 @@ export async function responseInterceptors(response: MyHttp.Response): Promise<a
 
 /** 响应错误处理 */
 export async function responseErrorHandler(error: MyHttp.Error) {
-  console.log(error,'哈哈好错误');
-  
   const { location } = history;
-  const { pathname } = location;
+  const { pathname,search } = location;
   console.log('出错信息:', error, error.config);
   let msg;
   switch (error.response && error.response.status) {
     // 非法的token、或者Token 过期、后端强制token失效
-    case 100401:
+    case 110401:
       //  无效令牌
       notification.error({
         message: '登录失效，请重新登录',
@@ -100,6 +85,9 @@ export async function responseErrorHandler(error: MyHttp.Error) {
       removeLocalStorage('userInfo');
       history.replace({
         pathname: '/user/login',
+        search: stringify({
+          redirect: pathname + search,
+        }),
       });
       break;
     case 404:

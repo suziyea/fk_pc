@@ -45,21 +45,26 @@ const RightContent: React.FC = () => {
     },
     [],
   );
+
+  const p1 = new Promise((resolve) => {
+    resolve(1);
+  });
+
   /**
  * 退出登录，并且将当前的 url 保存
  */
-  const loginOut = async () => {
-    const { query = {}, pathname } = history.location as Location;
+  const loginOut = async() => {
+    const { query = {}, pathname,search } = history.location as Location;
     const { redirect } = query;
-    // await signOut();
+    await p1;
     removeLocalStorage('token');
     removeLocalStorage('userInfo');
     // Note: There may be security issues, please note
     if (window.location.pathname !== '/user/login' && !redirect) {
-      history.replace({
+        history.replace({
         pathname: '/user/login',
         search: stringify({
-          redirect: pathname,
+          redirect: pathname + search,
         }),
       });
     }

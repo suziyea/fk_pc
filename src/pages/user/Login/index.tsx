@@ -52,25 +52,14 @@ const Login = () => {
    
     setLocalStorage('token', msg?.access_token);
     setLocalStorage('userInfo', { ...msg });
-    history.push('/');
-
-    // message.success("登录成功！");
-
-    // await fetchUserInfo();
-    /** 此方法会跳转到 redirect 参数所在的位置 */
-    // if (!history) return;
-    // const { query } = history.location;
-    // const { redirect } = query as { redirect: string };
-      // try {
-      //   // 登录
-        
-      // } catch (error) {
-      //   message.error("登录失败，请重试！");
-      // }
+    if (!history) return;
+    const { query } = history.location;
+    const { redirect } = query as {
+      redirect: string;
+    };
+    console.log(redirect, 'addr');
+    history.push(redirect || '/');
   };
-  // const { status,nickname } = userLoginState;
-
-
   return (
     <div className={styles.container}>
       {/* <div className={styles.lang} data-lang>

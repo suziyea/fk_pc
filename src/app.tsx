@@ -8,6 +8,8 @@ import Footer from '@/components/Footer';
 // import { BookOutlined, LinkOutlined } from '@ant-design/icons';
 // import defaultSettings from '../config/defaultSettings';
 import { getLocalStorage } from './utils/storage';
+import { stringify } from 'querystring';
+
 const isDev = process.env.NODE_ENV === 'development';
 console.log(isDev);
 
@@ -39,7 +41,7 @@ export interface IPermission {
 }
 
 // ProLayout 支持的api https://procomponents.ant.design/components/layout
-export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }:any) => {
+export const layout: RunTimeLayoutConfig = ({ initialState }:any) => {
   return {
     rightContentRender: () => <RightContent />,
     disableContentMargin: false,
@@ -47,19 +49,18 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }:an
     onPageChange: () => {
       const { location } = history;
       if (getLocalStorage('token')) {
-        console.log('哈哈哈哈的');
-        
         return;
       }
       // 如果没有登录，重定向到 login
       if (location.pathname !== loginPath) {
-        console.log('2323');
-        
-        history.push(loginPath);
+        history.replace({
+          pathname: '/user/login',
+          search: stringify({
+            redirect: location.pathname + location.search,
+          }),
+        });
+        return;
       }
-      // if (!initialState?.currentUser && location.pathname !== loginPath) {
-      //   history.push(loginPath);
-      // }
     },
     // links: isDev
     //   ? [
