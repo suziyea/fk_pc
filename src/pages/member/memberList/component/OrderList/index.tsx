@@ -2,7 +2,7 @@ import {
   useState, useEffect,
 } from 'react';
 import {
-  Tooltip,Table,Pagination
+  Tooltip,Table
 } from 'antd';
 import moment from 'moment';
 import { orderTypeOption,payStatusOption } from '@/utils/enum';
@@ -14,25 +14,20 @@ import styles from './index.less';
 
 const OrderList = ({userId}:any) => {
   const [orderListData, setOrderListData] = useState([]);
-  const [pageSize] = useState<number>(10);
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [recordsCount, setRecordsCount] = useState<number>();
+  // const [pageSize] = useState<number>(10);
+  // const [currentPage, setCurrentPage] = useState<number>(1);
+  // const [recordsCount, setRecordsCount] = useState<number>();
 
   useEffect(() => {
     getInitData()
-  }, [userId,currentPage]);
+  }, [userId]);
 
   const getInitData = async () => {
     const res = await getOrderlList({
       user_id:userId,
-      page:currentPage,
-      limit: pageSize
     });
     if (res.length > 0 ) {
       setOrderListData(res);
-      const pageTotal = Math.ceil(res?.length / pageSize);
-      console.log(pageTotal, res?.length, pageSize);
-      setRecordsCount(pageTotal * pageSize || 0);
       return;
     }
     setOrderListData([]);
@@ -91,17 +86,10 @@ const OrderList = ({userId}:any) => {
   },
   
   ];
-   // 分页
-   const onChangePage = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-  };
 
   return (
       <div className={styles.container_table}>
           <Table scroll={{ x: 1400 }} rowKey="id" pagination={false} columns={columns} dataSource={orderListData} />
-          <div className={styles.pagination}>
-                <Pagination total={recordsCount} onChange={(page: number) => onChangePage(page)} />
-            </div>
       </div>
   );
 };

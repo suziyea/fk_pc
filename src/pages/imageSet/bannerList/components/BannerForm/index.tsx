@@ -106,11 +106,11 @@ import {
                 }]}>
                 <Input
                   placeholder="请输入正确的跳转网址"
-                  maxLength={50}
+                  maxLength={100}
                   suffix={(
                     <span className={styles.suffix}>
                       {getFieldValue('link')?.length || 0}
-                      /50
+                      /100
                     </span>
                   )} />
               </Item>
