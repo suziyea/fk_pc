@@ -111,7 +111,7 @@ const ProductGroupList = () => {
           onClick={async () => {
             confirm(
               {
-                content: `确认要删除用该产品吗？`,
+                content: `确认要删除该产品吗？`,
                 okText: '确认',
                 okType: 'danger',
                 cancelText: '取消',
