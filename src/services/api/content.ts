@@ -49,3 +49,13 @@ export function getChannelTotalAllList(data: any) {
     data,
   });
 }
+
+// 删除渠道
+export function delChannel(data: any) {
+  return request({
+    url: '/api/admin/channel/delete',
+    method: 'post',
+    loading: true,
+    data,
+  });
+}

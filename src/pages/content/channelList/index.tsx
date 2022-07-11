@@ -3,7 +3,7 @@ import {
   useState, useRef, useEffect,
 } from 'react';
 import {
-  Card, Form, Typography,
+  Card, Form, Typography,Space,Modal,notification
 } from 'antd';
 import { useHistory } from 'umi';
 
@@ -12,11 +12,11 @@ import moment from 'moment';
 import HarTable from '@/components/HarTable';
 import { actionRefHandle } from '@/components/HarTable/types';
 import {
-  getChannelList,
+  getChannelList,delChannel
 } from '@/services/api/content';
-import { setSessionStorage, removeSessionStorage } from '@/utils/storage';
 
 const { Link } = Typography;
+const { confirm } = Modal;
 
 const ChannelList = () => {
   const history = useHistory();
@@ -50,6 +50,39 @@ const ChannelList = () => {
     key: 'created_at',
     width: 200,
     render: (text: any) => moment(text).format('YYYY-MM-DD HH:mm:ss'),
+  },
+  {
+    title: '操作',
+    key: 'operation',
+    width: 160,
+    fixed: 'right',
+    render: (_: any, record: any) => (
+      <Space size="middle">
+        <Link
+          className="link-color"
+          onClick={async () => {
+            confirm(
+              {
+                content: `确认要删除该渠道吗？`,
+                okText: '确认',
+                okType: 'danger',
+                cancelText: '取消',
+                onOk: async () => {
+                  await delChannel({
+                    id: record.id,
+                  });
+                  notification.success({
+                    message: `删除成功`,
+                  });
+                  actionRef.current?.reload();
+                },
+              },
+            );
+          }}>
+          删除
+        </Link>
+      </Space>
+    ),
   }];
   const disabledDate = (current: any) => (current && current > moment().endOf('day'));
 
@@ -87,7 +120,7 @@ const ChannelList = () => {
                 placeholder: '请输入渠道号',
               }],
           }}
-          rowKey="email"
+          rowKey="id"
           columns={columns}
           dataSource={channelListData}
           request={async (params) => {

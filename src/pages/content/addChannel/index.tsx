@@ -13,7 +13,7 @@ import { useHistory, useLocation, Location } from 'umi';
 import { validateEmoji, validateTrim } from '@/utils/validator';
 import DetailPageHeader from '@/components/DetailPageHeader';
 import InputLimited from '@/components/InputLimited';
-import UploadWithCrop from '@/components/UploadWithCrop';
+// import UploadWithCrop from '@/components/UploadWithCrop';
 import { getSessionStorage } from '@/utils/storage';
 
 import { useLockFn } from '@/utils';
@@ -142,7 +142,7 @@ const AddChannel = () => {
             </>
           )}
         </Card>
-        <Button type="primary" onClick={submit}>
+        <Button type="primary" style={{ margin: '20px 0' }} onClick={submit}>
           确认提交
         </Button>
       </Form>
