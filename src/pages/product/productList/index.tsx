@@ -13,6 +13,7 @@ import HandleProductForm from './component/HandleForm';
 import {
     getProdctList,updateProduct,addProduct,delProduct
 } from '@/services/api/product';
+import styles from './index.less';
 
 const { Link } = Typography;
 const { confirm } = Modal;
@@ -56,18 +57,18 @@ const ProductGroupList = () => {
     key: 'amount',
     width: 100,
   },
-  {
-    title: '周期',
-    dataIndex: 'term',
-    key: 'term',
-    width: 100,
-  },
-  {
-    title: '最快周期',
-    dataIndex: 'fastest_term',
-    key: 'fastest_term',
-    width: 100,
-  },
+  // {
+  //   title: '周期',
+  //   dataIndex: 'term',
+  //   key: 'term',
+  //   width: 100,
+  // },
+  // {
+  //   title: '最快周期',
+  //   dataIndex: 'fastest_term',
+  //   key: 'fastest_term',
+  //   width: 100,
+  // },
   {
     title: '创建时间',
     dataIndex: 'created_at',
@@ -159,7 +160,7 @@ const ProductGroupList = () => {
 
   return (
     <PageContainer>
-      <Card>
+      <Card className={styles.container_table}>
         <HarTable
           actionRef={actionRef}
           formRef={roleForms}

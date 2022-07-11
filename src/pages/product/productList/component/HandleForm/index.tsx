@@ -68,7 +68,7 @@ import {
                 limited={20} />
             </Item>
   
-            <Item
+            {/* <Item
               label="周期"
               name="term"
               rules={[
@@ -102,7 +102,7 @@ import {
                 style={{ maxWidth: '400px' }}
                 placeholder="请输入最快周期"
                 limited={40} />
-            </Item>
+            </Item> */}
             <Item
               label="sort（排序）"
               name="sort"
@@ -121,13 +121,7 @@ import {
               ]}>
                 <Input placeholder="请输入sort（排序）" />
             </Item>
-  
-          </Col>
-          <Col span={12}>
-            <Item label="logo" name="logo" rules={[{ required: true, message: '请上传logo' }]}>
-              <UploadWithCrop width={80} height={80} />
-            </Item>
-  
+
             <Item
               label="描述"
               name="remark"
@@ -139,6 +133,24 @@ import {
                 showCount
                 maxLength={500} />
             </Item>
+  
+          </Col>
+          <Col span={12}>
+            <Item label="logo" name="logo" rules={[{ required: true, message: '请上传logo' }]}>
+              <UploadWithCrop width={80} height={80} />
+            </Item>
+  
+            {/* <Item
+              label="描述"
+              name="remark"
+              rules={[{ required: true, message: '请输入描述' }]}>
+              <TextArea
+                placeholder="描述"
+                style={{ maxWidth: '500px' }}
+                rows={4}
+                showCount
+                maxLength={500} />
+            </Item> */}
           </Col>
         </Row>
         <Row gutter={12}>
