@@ -78,11 +78,11 @@ const otherSetForm = ({ form, type }: FormProps) => {
             shouldUpdate={(prevValues, currentValues) => prevValues.code !== currentValues.code}>
             {({ getFieldValue }) => ((getFieldValue('code') !== 'opening_page_image') ? (
               <Item label="图片" name="image" rules={[{ required: true, message: '请上传图片' }]}>
-                <UploadWithCrop width={328} height={137} />
+                <UploadWithCrop width={375} height={812} />
               </Item>
             ) : (
               <Item label="图片" name="image" rules={[{ required: true, message: '请上传图片' }]}>
-                <UploadWithCrop width={360} height={640} />
+                <UploadWithCrop width={375} height={812} />
               </Item>
             ))}
           </Item>
