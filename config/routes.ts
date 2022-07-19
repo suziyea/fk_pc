@@ -102,6 +102,12 @@
         name: "产品列表",
         component: "./product/productList",
       },
+      {
+        path: "productDataStatistics",
+        code: "productDataStatistics",
+        name: "推荐产品数据统计",
+        component: "./product/productDataStatistics",
+      },
       { component: "./404" },
     ],
   },

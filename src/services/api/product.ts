@@ -39,3 +39,13 @@ export function delProduct(data: any) {
       data,
     });
  }
+
+ // 推荐产品数据统计
+export function getProductDataStatistics(data: any) {
+  return request({
+    url: '/api/admin/product-recommend/data-statistics',
+    method: 'post',
+    loading: true,
+    data,
+  });
+}
