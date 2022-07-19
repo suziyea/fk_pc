@@ -11,7 +11,7 @@ import HarTable from '@/components/HarTable';
 import { actionRefHandle } from '@/components/HarTable/types';
 import HandleProductForm from './component/HandleForm';
 import {
-  getImageSet,updateImageSet
+  getImageSet, updateImageSet
 } from '@/services/api/other';
 
 const { Link } = Typography;
@@ -41,13 +41,13 @@ const ImagesSetList = () => {
     title: '名称',
     dataIndex: 'remark',
     key: 'remark',
-  }, 
+  },
   {
     title: '图片',
     dataIndex: 'url',
     key: 'url',
     width: 300,
-    render: (text: string) => <img style={{ width: '120px' , height: '120px'}} src={text} alt="icon" />,
+    render: (text: string) => <img style={{ width: '120px', height: '120px' }} src={text} alt="icon" />,
 
   },
   {
@@ -68,7 +68,7 @@ const ImagesSetList = () => {
       <Space size="middle">
         <Link
           className="link-color"
-          onClick={ () => {
+          onClick={() => {
             resetHandleFields();
             handleForm.setFieldsValue({
               ...record,
@@ -95,7 +95,7 @@ const ImagesSetList = () => {
     try {
       if (accountId) {
         await updateImageSet(submitForm)
-      } 
+      }
       notification.success({
         message: accountId ? '修改成功' : '新建成功',
       });
@@ -115,7 +115,7 @@ const ImagesSetList = () => {
           formRef={otherSetForms}
           filter={{
             initialValues: {
-              
+
             },
             // operation: [{
             //   key: 12,
@@ -159,7 +159,7 @@ const ImagesSetList = () => {
             });
             setImgSetListData(res?.list || []);
             return {
-              total: +(res?.total_row) || 0,
+              total: res?.list?.length || 0,
             };
           }} />
       </Card>

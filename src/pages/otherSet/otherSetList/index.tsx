@@ -3,7 +3,7 @@ import {
   useState, useRef, useEffect,
 } from 'react';
 import {
-  Card, Form, Space, Typography, Modal, notification,Tooltip
+  Card, Form, Space, Typography, Modal, notification, Tooltip
 } from 'antd';
 import moment from 'moment';
 
@@ -11,7 +11,7 @@ import HarTable from '@/components/HarTable';
 import { actionRefHandle } from '@/components/HarTable/types';
 import HandleProductForm from './component/HandleForm';
 import {
-    getOtherSetList,updateOtherSet
+  getOtherSetList, updateOtherSet
 } from '@/services/api/other';
 
 const { Link } = Typography;
@@ -41,7 +41,7 @@ const OtherSetList = () => {
     title: '名称',
     dataIndex: 'name',
     key: 'name',
-  }, 
+  },
   {
     title: '编码',
     dataIndex: 'code',
@@ -72,7 +72,7 @@ const OtherSetList = () => {
       <Space size="middle">
         <Link
           className="link-color"
-          onClick={ () => {
+          onClick={() => {
             resetHandleFields();
             handleForm.setFieldsValue({
               ...record,
@@ -102,7 +102,7 @@ const OtherSetList = () => {
     try {
       if (accountId) {
         await updateOtherSet(submitForm)
-      } 
+      }
       notification.success({
         message: accountId ? '修改成功' : '新建成功',
       });
@@ -122,7 +122,7 @@ const OtherSetList = () => {
           formRef={otherSetForms}
           filter={{
             initialValues: {
-              
+
             },
             // operation: [{
             //   key: 12,
@@ -166,7 +166,7 @@ const OtherSetList = () => {
             });
             setOtherSetListData(res?.list || []);
             return {
-              total: +(res?.total_row) || 0,
+              total: res?.list?.length || 0,
             };
           }} />
       </Card>

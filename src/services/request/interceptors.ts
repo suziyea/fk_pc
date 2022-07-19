@@ -22,7 +22,6 @@ loadingManger.hideHandler = () => {
 export function requestInterceptors(config: MyHttp.RequestConfig) {
   //  请求头携带token
   const token = getLocalStorage('token');
-  console.log('你好啊',config);
   
   if (config.loading) {
     loadingManger.show();
@@ -36,6 +35,8 @@ export function requestInterceptors(config: MyHttp.RequestConfig) {
 
 /** 响应拦截器 */
 export async function responseInterceptors(response: MyHttp.Response): Promise<any> {
+  const { location } = history;
+  const { pathname,search } = location;
   if (response.config.responseType === 'arraybuffer') {
     await loadingManger.hide();
     return response.data;
@@ -56,6 +57,17 @@ export async function responseInterceptors(response: MyHttp.Response): Promise<a
   }
 
   if (!response.config.silence) {
+    if (res.code === 110401) {
+      removeLocalStorage('token');
+      removeLocalStorage('userInfo');
+      history.replace({
+        pathname: '/user/login',
+        search: stringify({
+          redirect: pathname + search,
+        }),
+      });
+      return;
+    }
     //   TODO TOAST 弹窗提示
     notification.error({
       message: '系统繁忙',
@@ -73,6 +85,8 @@ export async function responseErrorHandler(error: MyHttp.Error) {
   const { location } = history;
   const { pathname,search } = location;
   console.log('出错信息:', error, error.config);
+
+  console.log(error.response.statusm,'www')
   let msg;
   switch (error.response && error.response.status) {
     // 非法的token、或者Token 过期、后端强制token失效
