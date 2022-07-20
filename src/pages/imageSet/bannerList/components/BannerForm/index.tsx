@@ -82,7 +82,7 @@ import {
         </Col>
         <Col span={12}>
           <Item name="image" label="banner图" rules={[{ required: true, message: '请上传图片' }]}>
-            <UploadWithCrop width={375} height={200} imgType={['jpg', 'png', 'gif']} />
+            <UploadWithCrop width={343} height={136} imgType={['jpg', 'png', 'gif']} />
           </Item>
   
         </Col>

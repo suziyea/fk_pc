@@ -44,16 +44,17 @@ const ProductGroupList = () => {
     key: 'name',
   },
   {
-    title: '点击量',
-    dataIndex: 'count',
-    key: 'count',
-  },
-  {
     title: '日期',
     dataIndex: 'date',
     key: 'date',
     render: (text: any) => moment(text).format('YYYY-MM-DD'),
-  }];
+  },
+  {
+    title: '点击量',
+    dataIndex: 'count',
+    key: 'count',
+  },
+ ];
   const disabledDate = (current: any) => (current && current > moment().endOf('day'));
 
 
