@@ -105,7 +105,7 @@
       {
         path: "productDataStatistics",
         code: "productDataStatistics",
-        name: "推荐产品数据统计",
+        name: "产品数据统计",
         component: "./product/productDataStatistics",
       },
       { component: "./404" },
