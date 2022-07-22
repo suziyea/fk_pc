@@ -7,7 +7,7 @@ const Welcome: React.FC = () => {
   return (
     <PageContainer>
       <Card>
-      welcome
+      {/* welcome */}
       <Space>
         <SmileTwoTone />
         <HeartTwoTone twoToneColor="#eb2f96" />
