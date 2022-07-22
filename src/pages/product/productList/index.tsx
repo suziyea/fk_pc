@@ -35,10 +35,11 @@ const ProductGroupList = () => {
 
 
 
-  const columns = [{
-    title: '排序',
-    dataIndex: 'sort',
-    key: 'sort',
+  const columns = [
+  {
+    title: 'id',
+    dataIndex: 'id',
+    key: 'id',
     width: 80,
   },
   {
@@ -72,6 +73,12 @@ const ProductGroupList = () => {
   //   key: 'fastest_term',
   //   width: 100,
   // },
+  {
+    title: '排序',
+    dataIndex: 'sort',
+    key: 'sort',
+    width: 80,
+  },
   {
     title: '创建时间',
     dataIndex: 'created_at',

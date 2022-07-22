@@ -172,11 +172,11 @@ import {
                   }]}>
                   <Input
                     placeholder="链接"
-                    maxLength={100}
+                    maxLength={500}
                     suffix={(
                       <span className={styles.suffix}>
                         {getFieldValue('link')?.length || 0}
-                        /100
+                        /500
                       </span>
                     )} />
                 </Item>
