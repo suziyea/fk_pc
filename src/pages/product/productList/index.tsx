@@ -14,7 +14,9 @@ import {
     getProdctList,updateProduct,addProduct,delProduct
 } from '@/services/api/product';
 import styles from './index.less';
-
+import {
+  toThousand,
+} from '@/utils';
 const { Link } = Typography;
 const { confirm } = Modal;
 
@@ -34,9 +36,9 @@ const ProductGroupList = () => {
 
 
   const columns = [{
-    title: 'id',
-    dataIndex: 'id',
-    key: 'id',
+    title: '排序',
+    dataIndex: 'sort',
+    key: 'sort',
     width: 80,
   },
   {
@@ -55,7 +57,8 @@ const ProductGroupList = () => {
     title: '金额',
     dataIndex: 'amount',
     key: 'amount',
-    width: 100,
+    width: 200,
+    render: (text: string | number) => (text ? `¥ ${toThousand((+(text || 0)).toFixed(2))}` : ''),
   },
   // {
   //   title: '周期',

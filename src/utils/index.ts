@@ -16,6 +16,16 @@ export const mapEnum = (val: any, enumList: Array<enumType>) => {
   return strVal;
 };
 
+/**
+ * 千分位分割
+ * @param price 数字、字符串
+ * @returns 返回千分位分割的字符串
+ */
+ export const toThousand = (price: number | string | undefined) => {
+  if (!price && price !== 0) return '';
+  return String(price).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
+
 
 // 防止多次点击
 export function useLockFn<T extends any[], K>(fn: (...args: T) => Promise<K>): (...args: T) => Promise<K | undefined> {
