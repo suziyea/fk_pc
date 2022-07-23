@@ -44,7 +44,7 @@ const ProductGroupList = () => {
   const getChannel = async () => {
     const list = await getChannelList({});
     setChannelList(
-      list.map((v: any) => ({
+      list?.map((v: any) => ({
           value: v.id,
           label: v.name,
         })),
