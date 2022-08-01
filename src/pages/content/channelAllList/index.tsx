@@ -12,6 +12,9 @@ import { actionRefHandle } from '@/components/HarTable/types';
 import {
   getChannelTotalList,
 } from '@/services/api/content';
+import {
+  toThousand,
+} from '@/utils';
 // import { setSessionStorage, removeSessionStorage } from '@/utils/storage';
 
 // const { Link } = Typography;
@@ -31,31 +34,33 @@ const ChannelList = () => {
     key: 'code',
     width: 60,
     ellipsis: {
-        showTitle: false,
-      },
-      render: (code:any) => (
-        <Tooltip placement="topLeft" title={code}>
-          {code}
-        </Tooltip>
-      ),
+      showTitle: false,
+    },
+    render: (code:any) => (
+      <Tooltip placement="topLeft" title={code}>
+        {code}
+      </Tooltip>
+    ),
   },
   {
     title: '日期',
     dataIndex: 'date',
     key: 'date',
-    width: 70,
+    width: 65,
   },
   {
     title: '付款转化率',
     dataIndex: 'pay_convert_percent',
     key: 'pay_convert_percent',
     align: 'center',
-    width: 60,
+    width: 76,
   }, {
     title: 'UV',
     dataIndex: 'uv',
-    width: 40,
+    width: 90,
     key: 'uv',
+    render: (text: string | number) => (text ? `${toThousand((+(text || 0)))}` : 0),
+    
   },
   {
     title: '注册量',
@@ -105,7 +110,12 @@ const ChannelList = () => {
     title: '付费金额',
     dataIndex: 'first_pay_amount',
     key: 'first_pay_amount',
-    width: 70,
+    width: 80,
+    render: (code:any) => (
+      <Tooltip placement="topLeft" title={code}>
+        {code}
+      </Tooltip>
+    ),
   },
   {
     title: '二次付款数',
@@ -119,7 +129,12 @@ const ChannelList = () => {
     dataIndex: 'second_pay_amount',
     key: 'second_pay_amount',
     align: 'center',
-    width: 92,
+    width: 80,
+    render: (code:any) => (
+      <Tooltip placement="topLeft" title={code}>
+        {code}
+      </Tooltip>
+    ),
   },
 ];
   const disabledDate = (current: any) => (current && current > moment().endOf('day'));
