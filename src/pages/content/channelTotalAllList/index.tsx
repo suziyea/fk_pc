@@ -30,7 +30,7 @@ const ChannelList = () => {
     title: '日期',
     dataIndex: 'date',
     key: 'date',
-    width: 60,
+    width: 65,
   },
   {
     title: '付款转化率',
@@ -41,7 +41,7 @@ const ChannelList = () => {
   }, {
     title: 'UV',
     dataIndex: 'uv',
-    width: 40,
+    width: 90,
     key: 'uv',
   },
   {
@@ -80,7 +80,7 @@ const ChannelList = () => {
     dataIndex: 'first_no_verification_code_user_count',
     align: 'center',
     key: 'first_no_verification_code_user_count',
-    width: 100,
+    width: 90,
   },
   {
     title: '付款数',
